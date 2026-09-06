@@ -1,37 +1,179 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.3">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SaturdayLa — Kids &amp; Family Photography, Los Angeles</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ivory:#FFF9F2;--sand:#F6EADD;--blush:#FFEDE9;--graphite:#1A1614;--dim:rgba(26,22,20,.66);--hair:rgba(26,22,20,.14);--brick:#B23A26;--coral:#FF6F5E;--gut:clamp(20px,5vw,84px);--display:"Fraunces",Georgia,serif;--body:"Karla",system-ui,sans-serif;--r:18px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ivory);color:var(--graphite);font-family:var(--body);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+.wrap{padding-inline:var(--gut);max-width:1280px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);font-variation-settings:"SOFT" 60,"WONK" 1;font-weight:600;line-height:1.04;letter-spacing:-.02em}
+h1{font-size:clamp(40px,7.4vw,94px);line-height:1}
+h2{font-size:clamp(30px,4.4vw,56px)}
+h3{font-size:clamp(20px,2.1vw,27px);line-height:1.18}
+.eyebrow{display:block;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--brick)}
+.lede{font-size:clamp(18px,1.7vw,22px);line-height:1.5;color:var(--dim);max-width:40ch}
+.body{color:var(--dim);max-width:58ch}
+a{color:var(--brick)}
+:focus-visible{outline:2.5px solid var(--brick);outline-offset:3px;border-radius:4px}
+.btn{display:inline-block;font-family:var(--body);font-size:15px;font-weight:700;color:var(--graphite);background:var(--coral);padding:16px 30px;border-radius:999px;text-decoration:none;border:0;cursor:pointer;box-shadow:0 2px 0 rgba(178,58,38,.5);transition:transform .16s ease,box-shadow .16s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 5px 0 rgba(178,58,38,.5)}
+.btn--quiet{background:transparent;box-shadow:none;border:1.5px solid var(--hair)}
+.btn--quiet:hover{box-shadow:none;border-color:var(--brick)}
+.masthead{position:sticky;top:0;z-index:60;background:var(--ivory);border-bottom:1px solid var(--hair)}
+.masthead .row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px var(--gut);max-width:1280px;margin:0 auto}
+.brand{font-family:var(--display);font-variation-settings:"SOFT" 60,"WONK" 1;font-weight:700;font-size:24px;color:var(--graphite);text-decoration:none;line-height:1}
+.brand small{display:block;font-family:var(--body);font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--brick);margin-top:6px}
+.nav ul{list-style:none;display:flex;gap:clamp(12px,1.8vw,26px);align-items:center}
+.nav a{font-weight:600;font-size:15px;color:var(--graphite);text-decoration:none;padding:6px 0;border-bottom:2px solid transparent}
+.nav a:hover{border-bottom-color:var(--coral)}
+.nav .btn{padding:12px 22px;margin-left:6px}
+.nav-toggle{display:none;background:none;border:0;width:40px;height:40px}
+.nav-toggle span{display:block;width:22px;height:2px;background:var(--graphite);margin:5px auto;border-radius:2px}
+@media (max-width:900px){.nav-toggle{display:block}.nav{position:fixed;inset:72px 0 0;background:var(--ivory);transform:translateX(100%);transition:transform .3s;overflow:auto}.nav.is-open{transform:none}.nav ul{flex-direction:column;align-items:stretch;gap:0;padding:20px var(--gut)}.nav a{display:block;font-family:var(--display);font-size:30px;padding:12px 0;border-bottom:1px solid var(--hair)}.nav .btn{display:block;text-align:center;margin:20px 0 0;font-family:var(--body);font-size:15px}}
+.ph{position:relative;width:100%;height:100%;border-radius:var(--r);overflow:hidden;background:radial-gradient(90% 80% at 20% 15%,rgba(255,111,94,.3) 0%,transparent 58%),radial-gradient(80% 80% at 85% 85%,#F6EADD 0%,transparent 62%),linear-gradient(135deg,#FFEDE9,#F6EADD 55%,#FFF3E6)}
+.ph img{width:100%;height:100%;object-fit:cover}
+section{padding-block:clamp(56px,9vh,120px)}
+.head{display:flex;flex-direction:column;gap:12px;margin-bottom:clamp(28px,4vh,52px)}
+.hero{padding-block:clamp(44px,7vh,86px) clamp(36px,5vh,64px)}
+.hero .grid{display:grid;gap:clamp(28px,4vw,56px);align-items:center}
+@media (min-width:940px){.hero .grid{grid-template-columns:1.04fr .96fr}}
+.hero h1{margin:16px 0 22px}
+.hero .actions{display:flex;flex-wrap:wrap;align-items:center;gap:22px;margin-top:30px}
+.hero .note{font-size:14px;color:var(--dim)}
+.hero .shot{aspect-ratio:4/5}
+@media (max-width:939px){.hero .shot{aspect-ratio:3/2}}
+.types{display:grid;gap:clamp(14px,2vw,24px);grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (min-width:900px){.types{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.type{display:block;min-width:0;text-decoration:none;color:var(--graphite)}
+.type .ph{aspect-ratio:3/4;transition:transform .2s ease}
+.type:hover .ph{transform:translateY(-4px)}
+.type h3{margin:14px 0 4px}
+.type span{color:var(--dim);font-size:15px}
+.collage .board{display:grid;gap:clamp(14px,2vw,26px);grid-template-columns:repeat(6,1fr)}
+.card{border-radius:var(--r);box-shadow:0 10px 30px rgba(26,22,20,.09);overflow:hidden}
+.c1{grid-column:1/4;aspect-ratio:4/3;transform:rotate(-1.6deg)}
+.c2{grid-column:4/7;aspect-ratio:16/11;transform:rotate(1.2deg);margin-top:clamp(16px,3vw,40px)}
+.c3{grid-column:1/3;aspect-ratio:1/1;transform:rotate(1.8deg)}
+.c4{grid-column:3/5;aspect-ratio:3/4;transform:rotate(-1.1deg);margin-top:clamp(-30px,-3vw,-10px)}
+.c5{grid-column:5/7;aspect-ratio:1/1;transform:rotate(-2.2deg)}
+@media (max-width:760px){.collage .board{grid-template-columns:repeat(2,1fr)}.c1{grid-column:1/3;aspect-ratio:3/2}.c2{grid-column:1/2;margin-top:0;aspect-ratio:1/1}.c3{grid-column:2/3}.c4{grid-column:1/2;margin-top:0}.c5{grid-column:2/3;aspect-ratio:3/4}}
+.collage .cap{margin-top:26px;font-size:14px;color:var(--dim)}
+.flow{display:grid;gap:clamp(20px,2.6vw,32px)}
+@media (min-width:900px){.flow{grid-template-columns:repeat(3,1fr)}}
+.flow .item{background:var(--sand);border-radius:22px;padding:clamp(24px,2.8vw,34px)}
+.flow .item h3{margin:10px 0 10px}
+.flow .item p{max-width:none}
+.quotes{display:grid;gap:clamp(18px,2.4vw,28px)}
+@media (min-width:900px){.quotes{grid-template-columns:repeat(3,1fr)}}
+.quote{background:var(--blush);border-radius:22px;padding:clamp(24px,2.8vw,34px);font-family:var(--display);font-variation-settings:"SOFT" 60;font-size:20px;line-height:1.35}
+.quote cite{display:block;margin-top:14px;font-family:var(--body);font-style:normal;font-size:14px;color:var(--dim)}
+.about{display:grid;gap:clamp(26px,4vw,60px);align-items:center}
+@media (min-width:900px){.about{grid-template-columns:.85fr 1.15fr}}
+.about .portrait{aspect-ratio:4/5}
+.book{background:var(--sand)}
+.book .cta{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between}
+footer{padding-block:30px 46px;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;font-size:14px;color:var(--dim)}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.btn,.btn:hover{transition:none;transform:none}}
+</style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="stylesheet" href="styles.css"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;История Беларуси&lt;/title&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="timeline"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;input type="range" id="date-slider" min="862" max="2025" value="1991"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 id="event-title"&gt;Выберите дату&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p id="event-description"&gt;Описание события появится здесь.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;button id="add-event"&gt;Добавить событие&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="script.js"&gt;&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+<header class="masthead"><div class="row">
+  <a class="brand" href="#">SaturdayLa<small>Kids · Family · Parties · Los Angeles</small></a>
+  <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav class="nav"><ul>
+    <li><a href="#">Family</a></li><li><a href="#">Kids</a></li><li><a href="#">Parties</a></li><li><a href="#">Weddings</a></li><li><a href="#">Portfolio</a></li><li><a href="#">Pricing</a></li><li><a href="#">About</a></li>
+    <li><a class="btn" href="#book">Check my date</a></li>
+  </ul></nav>
+</div></header>
+
+<main>
+<section class="hero wrap">
+  <div class="grid">
+    <div>
+      <span class="eyebrow">Kids &amp; family photography studio · Los Angeles</span>
+      <h1>You'll be in the photos too, for once.</h1>
+      <p class="lede">Family sessions, kids' portraits and birthday parties — photographed so you can put your phone down and actually be there.</p>
+      <div class="actions"><a class="btn" href="#book">Check my date</a><span class="note">Usually booked 3–4 weeks out.</span></div>
+    </div>
+    <div class="shot"><div class="ph"><img src="https://loremflickr.com/900/1125/family,child?lock=11" alt=""></div></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="head reveal"><span class="eyebrow">What we shoot</span><h2>Pick the kind of day<br>you're planning.</h2></div>
+  <div class="types reveal">
+    <a class="type" href="#"><div class="ph"><img src="https://loremflickr.com/900/1200/family,children?lock=21" alt=""></div><h3>Family sessions</h3><span>Studio, home or the city</span></a>
+    <a class="type" href="#"><div class="ph"><img src="https://loremflickr.com/900/1200/kid,portrait?lock=22" alt=""></div><h3>Kids &amp; teens</h3><span>Character portraits, not school photos</span></a>
+    <a class="type" href="#"><div class="ph"><img src="https://loremflickr.com/900/1200/birthday,party?lock=25" alt=""></div><h3>Birthday parties</h3><span>The whole thing, start to cake to meltdown</span></a>
+    <a class="type" href="#"><div class="ph"><img src="https://loremflickr.com/900/1200/wedding,bride?lock=23" alt=""></div><h3>Weddings</h3><span>Documentary with an editorial eye</span></a>
+  </div>
+</section>
+
+<section class="collage wrap">
+  <div class="head reveal"><span class="eyebrow">The photos</span><h2>An hour with your family<br>is about forty real moments.</h2></div>
+  <div class="board reveal">
+    <div class="card c1"><div class="ph"><img src="https://loremflickr.com/1200/900/family,home?lock=41" alt=""></div></div>
+    <div class="card c2"><div class="ph"><img src="https://loremflickr.com/1200/825/kids,running?lock=42" alt=""></div></div>
+    <div class="card c3"><div class="ph"><img src="https://loremflickr.com/900/900/cake,birthday?lock=43" alt=""></div></div>
+    <div class="card c4"><div class="ph"><img src="https://loremflickr.com/900/1200/girl,portrait?lock=44" alt=""></div></div>
+    <div class="card c5"><div class="ph"><img src="https://loremflickr.com/900/900/balloons?lock=45" alt=""></div></div>
+  </div>
+  <p class="cap reveal">Every frame here is from a real session. Nothing staged, nothing stock.</p>
+</section>
+
+<section class="wrap">
+  <div class="head reveal"><span class="eyebrow">How it goes</span><h2>What actually happens<br>on the day.</h2></div>
+  <div class="flow reveal">
+    <div class="item"><span class="eyebrow">First</span><h3>We pick a place and a look</h3><p class="body">Studio, your living room or a park with good light. We send a short outfit guide so everyone looks put together, not matching.</p></div>
+    <div class="item"><span class="eyebrow">Then</span><h3>We let it happen</h3><p class="body">No lining kids up, no "everybody say cheese". Light direction for the grown-ups, then we step back. Kids ignore us within ten minutes.</p></div>
+    <div class="item"><span class="eyebrow">After</span><h3>You get the gallery</h3><p class="body">A private link within two weeks. Retouched by hand, full resolution, yours to print and send to grandma.</p></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="head reveal"><span class="eyebrow">Parents say</span><h2>Mostly about the kid<br>who "hates photos".</h2></div>
+  <div class="quotes reveal">
+    <blockquote class="quote">"Our son refused to look at the camera for twenty minutes. Somehow every single photo is perfect."<cite>Elena, family session, Pasadena</cite></blockquote>
+    <blockquote class="quote">"He shot the whole party and I didn't touch my phone once. First time I'm actually in the pictures."<cite>Maria, 5th birthday, Santa Monica</cite></blockquote>
+    <blockquote class="quote">"The library shoot looked like a magazine spread. Their agency used the photos for comp cards."<cite>Natalie, kids editorial session</cite></blockquote>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="about">
+    <div class="portrait reveal"><div class="ph"><img src="https://loremflickr.com/900/1125/photographer,studio?lock=31" alt=""></div></div>
+    <div class="reveal">
+      <span class="eyebrow">Who's behind the camera</span>
+      <h2 style="margin:12px 0 20px">We're SaturdayLa.</h2>
+      <p class="body" style="margin-bottom:16px">A small creative team of portrait and editorial photographers in Los Angeles, built around one thing: making kids and families look like themselves, not like they're being photographed.</p>
+      <p class="body" style="margin-bottom:26px">Kids are the whole point. Same care, same eye for light, way more running.</p>
+      <a href="#">More about us →</a>
+    </div>
+  </div>
+</section>
+
+<section class="book" id="book"><div class="wrap">
+  <div class="cta reveal">
+    <div><span class="eyebrow">Booking</span><h2 style="margin:12px 0 10px">Tell us about your day.</h2><p class="body">Send the date and we'll come back the same day with availability and a quote.</p></div>
+    <a class="btn" href="#">Check my date</a>
+  </div>
+  <footer>
+    <span>SaturdayLa · Kids, family &amp; party photography · Los Angeles, CA</span>
+    <span><a href="#">+1 (747) 217-9834</a> · <a href="#">Email</a> · <a href="#">Instagram</a></span>
+  </footer>
+</div></section>
+</main>
+<script>
+(function(){var r=window.matchMedia('(prefers-reduced-motion: reduce)').matches,i=document.querySelectorAll('.reveal');if(r||!('IntersectionObserver' in window)){i.forEach(function(e){e.classList.add('in')});return}var o=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');o.unobserve(en.target)}})},{threshold:.1,rootMargin:'0px 0px -6% 0px'});i.forEach(function(e){o.observe(e)});var t=document.querySelector('.nav-toggle'),n=document.querySelector('.nav');t&&t.addEventListener('click',function(){n.classList.toggle('is-open')})})();
+</script>
 </body>
 </html>
