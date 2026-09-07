@@ -1,0 +1,37 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","style":{"spacing":{"margin":{"top":"var:preset|spacing|50"}}},"layout":{"type":"constrained"}} -->
+<main class="wp-block-group" style="margin-top:var(--wp--preset--spacing--50)"><!-- wp:marcdemure/breadcrumbs /-->
+
+<!-- wp:query-title {"type":"archive","showPrefix":false,"level":1,"style":{"spacing":{"margin":{"top":"var:preset|spacing|30"}}},"fontSize":"xx-large"} /-->
+
+<!-- wp:term-description {"style":{"spacing":{"margin":{"top":"var:preset|spacing|30"}}},"textColor":"ash","fontSize":"large"} /-->
+
+<!-- wp:query {"queryId":0,"query":{"perPage":18,"pages":0,"offset":0,"postType":"shoot","order":"desc","orderBy":"date","inherit":true},"align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|50"}}}} -->
+<div class="wp-block-query alignwide" style="margin-top:var(--wp--preset--spacing--50)"><!-- wp:post-template {"style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"grid","minimumColumnWidth":"280px"}} -->
+<!-- wp:group {"className":"md-card","layout":{"type":"constrained"}} -->
+<div class="wp-block-group md-card"><!-- wp:group {"className":"md-card__frame","style":{"spacing":{"blockGap":"0"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group md-card__frame"><!-- wp:post-featured-image {"isLink":true,"aspectRatio":"3/4"} /--></div>
+<!-- /wp:group -->
+
+<!-- wp:post-title {"isLink":true,"level":2,"style":{"spacing":{"margin":{"top":"var:preset|spacing|20"}}},"fontSize":"large"} /--></div>
+<!-- /wp:group -->
+<!-- /wp:post-template -->
+
+<!-- wp:query-pagination {"style":{"spacing":{"margin":{"top":"var:preset|spacing|60"}}},"layout":{"type":"flex","justifyContent":"space-between"}} -->
+<!-- wp:query-pagination-previous /-->
+<!-- wp:query-pagination-numbers /-->
+<!-- wp:query-pagination-next /-->
+<!-- /wp:query-pagination -->
+
+<!-- wp:query-no-results -->
+<!-- wp:paragraph -->
+<p>Nothing published in this section yet.</p>
+<!-- /wp:paragraph -->
+<!-- /wp:query-no-results --></div>
+<!-- /wp:query -->
+
+<!-- wp:pattern {"slug":"marcdemure/booking-cta"} /--></main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

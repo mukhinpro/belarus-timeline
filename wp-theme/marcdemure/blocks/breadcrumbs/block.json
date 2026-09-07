@@ -1,0 +1,16 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "marcdemure/breadcrumbs",
+	"title": "Breadcrumbs",
+	"category": "theme",
+	"icon": "menu-alt",
+	"description": "The visible crumb trail, built from the same code as the BreadcrumbList schema so the two cannot disagree.",
+	"textdomain": "marcdemure",
+	"supports": {
+		"html": false,
+		"spacing": { "margin": true }
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

@@ -1,0 +1,43 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","style":{"spacing":{"margin":{"top":"var:preset|spacing|50"}}},"layout":{"type":"constrained"}} -->
+<main class="wp-block-group" style="margin-top:var(--wp--preset--spacing--50)"><!-- wp:paragraph {"className":"md-eyebrow"} -->
+<p class="md-eyebrow">Members</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":1,"style":{"spacing":{"margin":{"top":"12px"}}},"fontSize":"xx-large"} -->
+<h1 class="wp-block-heading has-xx-large-font-size" style="margin-top:12px">The full sets.</h1>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"var:preset|spacing|30"}}},"textColor":"ash","fontSize":"large"} -->
+<p class="has-ash-color has-text-color has-large-font-size" style="margin-top:var(--wp--preset--spacing--30)">Everything published here stays here. Nothing is downloadable, and nothing is shared onward.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:query {"queryId":0,"query":{"perPage":18,"pages":0,"offset":0,"postType":"private_set","order":"desc","orderBy":"date","inherit":false},"align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|50"}}}} -->
+<div class="wp-block-query alignwide" style="margin-top:var(--wp--preset--spacing--50)"><!-- wp:post-template {"style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"grid","minimumColumnWidth":"280px"}} -->
+<!-- wp:group {"className":"md-card","layout":{"type":"constrained"}} -->
+<div class="wp-block-group md-card"><!-- wp:group {"className":"md-card__frame","style":{"spacing":{"blockGap":"0"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group md-card__frame"><!-- wp:post-featured-image {"isLink":true,"aspectRatio":"3/4"} /--></div>
+<!-- /wp:group -->
+
+<!-- wp:post-title {"isLink":true,"level":2,"style":{"spacing":{"margin":{"top":"var:preset|spacing|20"}}},"fontSize":"large"} /-->
+
+<!-- wp:post-date {"textColor":"ash","fontSize":"small"} /--></div>
+<!-- /wp:group -->
+<!-- /wp:post-template -->
+
+<!-- wp:query-pagination {"style":{"spacing":{"margin":{"top":"var:preset|spacing|60"}}},"layout":{"type":"flex","justifyContent":"space-between"}} -->
+<!-- wp:query-pagination-previous /-->
+<!-- wp:query-pagination-numbers /-->
+<!-- wp:query-pagination-next /-->
+<!-- /wp:query-pagination -->
+
+<!-- wp:query-no-results -->
+<!-- wp:paragraph -->
+<p>The first set goes up shortly.</p>
+<!-- /wp:paragraph -->
+<!-- /wp:query-no-results --></div>
+<!-- /wp:query --></main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->
