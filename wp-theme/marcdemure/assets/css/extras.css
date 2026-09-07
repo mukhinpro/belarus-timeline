@@ -128,8 +128,14 @@
 }
 
 /* --- The two grounds --------------------------------------------------
-   Black plaster and terracotta plaster, and a single pale seam where they
-   meet. Nothing else marks the join.                                    */
+   Black plaster and terracotta plaster, one pale seam where they meet. The
+   plaster is a real tile (assets/img/plaster.png), multiplied over the
+   colour, so every terracotta surface — sections, buttons, the price
+   cards — carries the same mottling as the reference wall.               */
+
+:root {
+	--md-plaster: url("../img/plaster.png");
+}
 
 .md-seam {
 	height: 1px;
@@ -139,15 +145,50 @@
 	opacity: 0.85;
 }
 
+.md-plaster,
+.has-terracotta-background-color,
+.wp-element-button,
+.md-btn {
+	position: relative;
+	isolation: isolate;
+}
+
+.md-plaster::before,
+.has-terracotta-background-color::before,
+.wp-element-button::before,
+.md-btn::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	pointer-events: none;
+	background-image: var(--md-plaster);
+	background-size: 420px 420px;
+	mix-blend-mode: overlay;
+	opacity: 0.85;
+}
+
+.md-btn--quiet::before,
+.is-style-outline .wp-element-button::before {
+	display: none;
+}
+
 .has-terracotta-background-color {
+	background-color: var(--wp--preset--color--terracotta);
 	background-image:
-		radial-gradient(90% 70% at 20% 10%, rgba(255, 190, 150, 0.10), transparent 60%),
-		radial-gradient(80% 60% at 85% 90%, rgba(60, 20, 8, 0.28), transparent 65%);
+		radial-gradient(70% 60% at 14% 6%, rgba(255, 176, 120, 0.16), transparent 62%),
+		radial-gradient(60% 50% at 88% 94%, rgba(70, 20, 6, 0.42), transparent 66%),
+		radial-gradient(38% 30% at 62% 46%, rgba(255, 150, 96, 0.08), transparent 70%);
+}
+
+.has-terracotta-background-color::before {
+	background-size: 640px 640px;
+	opacity: 1;
 }
 
 .has-terracotta-background-color .has-ash-color,
 .has-terracotta-background-color .md-panel__note {
-	color: #F1DCCB;
+	color: #F3DDCB;
 }
 
 .has-terracotta-background-color .md-eyebrow,
@@ -157,13 +198,19 @@
 
 .has-terracotta-background-color .md-panel {
 	border-color: rgba(239, 230, 214, 0.25);
-	background: rgba(12, 11, 10, 0.28);
+	background: rgba(12, 11, 10, 0.30);
 }
 
-.has-terracotta-background-color .md-btn {
+.has-terracotta-background-color .md-btn,
+.has-terracotta-background-color .wp-element-button {
 	background: var(--wp--preset--color--pearl);
 	border-color: var(--wp--preset--color--pearl);
 	color: var(--wp--preset--color--ink);
+}
+
+.has-terracotta-background-color .md-btn::before,
+.has-terracotta-background-color .wp-element-button::before {
+	display: none;
 }
 
 .has-terracotta-background-color .md-btn:hover,

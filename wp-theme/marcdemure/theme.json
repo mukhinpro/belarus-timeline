@@ -21,12 +21,12 @@
 				},
 				{
 					"slug": "coal",
-					"color": "#161313",
+					"color": "#171514",
 					"name": "Coal"
 				},
 				{
 					"slug": "smoke",
-					"color": "#1F1B19",
+					"color": "#232020",
 					"name": "Smoke"
 				},
 				{
@@ -46,17 +46,17 @@
 				},
 				{
 					"slug": "terracotta",
-					"color": "#B04A22",
+					"color": "#B5501F",
 					"name": "Terracotta"
 				},
 				{
 					"slug": "seam",
-					"color": "#E3CFA4",
+					"color": "#E8D6A6",
 					"name": "Seam"
 				},
 				{
 					"slug": "terracotta-deep",
-					"color": "#8A3716",
+					"color": "#8C3A15",
 					"name": "Terracotta, deep"
 				}
 			]
