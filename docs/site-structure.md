@@ -16,6 +16,7 @@
 │   ├── /sessions/kids/                    Галерея: дети и подростки
 │   ├── /sessions/parties/                 Галерея: дни рождения
 │   ├── /sessions/weddings/                Галерея: свадьбы
+│   ├── /sessions/maternity/               Галерея: беременность
 │   ├── /sessions/motherhood/              Галерея: родители
 │   ├── /sessions/model-portfolios/        Галерея: модельное портфолио
 │   └── /portfolio/<съёмка>/               Одна съёмка целиком
@@ -24,6 +25,7 @@
 ├── /kids-photographer-los-angeles/        Услуга: дети и подростки
 ├── /kids-party-photography-los-angeles/   Услуга: дни рождения
 ├── /wedding-photography-los-angeles/      Услуга: свадьбы
+├── /maternity-photography-los-angeles/    Услуга: беременность
 ├── /motherhood-photography-los-angeles/   Услуга: портреты родителей
 ├── /kids-model-portfolio-los-angeles/     Услуга: модельное портфолио
 │
@@ -37,7 +39,7 @@
 └── /locations/<место>/                    Страницы локаций (растут со временем)
 ```
 
-**Почему галереи разнесены по адресам, а не сделаны фильтром.** Фильтр на JavaScript Google не выполняет: он увидит одну страницу вместо шести. Отдельные адреса дают шесть страниц, каждая со своим заголовком и своим набором ключевых слов. Плюс на такую страницу можно дать ссылку в Instagram — «вот только свадьбы».
+**Почему галереи разнесены по адресам, а не сделаны фильтром.** Фильтр на JavaScript Google не выполняет: он увидит одну страницу вместо семи. Отдельные адреса дают семь страниц, каждая со своим заголовком и своим набором ключевых слов. Плюс на такую страницу можно дать ссылку в Instagram — «вот только свадьбы».
 
 **Разница между галереей и страницей услуги.** Галерея отвечает на «покажи работы», услуга — на «сколько стоит и как проходит». Это разные намерения в поиске, поэтому и страницы разные, но они ссылаются друг на друга.
 
@@ -61,12 +63,13 @@
 | 3 | Kids & Teen Photographer in Los Angeles | `kids-photographer-los-angeles` | Service page |
 | 4 | Kids' Party Photographer in Los Angeles | `kids-party-photography-los-angeles` | Service page |
 | 5 | Wedding Photography in Los Angeles | `wedding-photography-los-angeles` | Service page |
-| 6 | Motherhood & Parent Portraits in Los Angeles | `motherhood-photography-los-angeles` | Service page |
-| 7 | Kids Model Portfolio Photographer in Los Angeles | `kids-model-portfolio-los-angeles` | Service page |
-| 8 | Pricing | `pricing` | Pricing page |
-| 9 | About | `about` | по умолчанию |
-| 10 | Book a session | `book` | Booking page |
-| 11 | Journal | `journal` | по умолчанию, пустая → Настройки → Чтение |
+| 6 | Maternity Photography in Los Angeles | `maternity-photography-los-angeles` | Service page |
+| 7 | Motherhood & Parent Portraits in Los Angeles | `motherhood-photography-los-angeles` | Service page |
+| 8 | Kids Model Portfolio Photographer in Los Angeles | `kids-model-portfolio-los-angeles` | Service page |
+| 9 | Pricing | `pricing` | Pricing page |
+| 10 | About | `about` | по умолчанию |
+| 11 | Book a session | `book` | Booking page |
+| 12 | Journal | `journal` | по умолчанию, пустая → Настройки → Чтение |
 
 Галереи `/portfolio/` и `/sessions/...` создавать **не нужно** — они появляются сами, как только опубликуешь первую съёмку.
 
@@ -79,7 +82,7 @@
 Собирается из паттернов: Hero → Service tiles → последние съёмки → How it goes → Testimonials → Booking. Меняются только фотографии и отзывы.
 
 **Title:** ThereYare — Family, Kids & Wedding Photographer in Los Angeles
-**Meta description:** Unposed family, children's and wedding photography across Los Angeles. Sessions from $[ ]. Private gallery in two weeks.
+**Meta description:** Unposed family, children's and wedding photography across Los Angeles. Sessions from $360. Family sessions $800, weddings from $1,600.
 
 ---
 
@@ -104,6 +107,8 @@ H1 и вступление уже в шаблоне. При желании по�
 
 **Weddings.** Documentary coverage with an editorial eye. We shoot the day as it happens and step in only for the light.
 
+**Maternity.** The last weeks before everything changes, photographed while they are still happening. Partner and older children welcome.
+
 **Model portfolios.** Agency tests, digitals and comp-card crops for child and teen models, shot to the brief agencies actually give.
 
 **Mothers & fathers.** Portraits of the parent, not just the parent-of. Usually the photographs people are most nervous about and most grateful for.
@@ -114,11 +119,11 @@ H1 и вступление уже в шаблоне. При желании по�
 
 **Slug:** `family-photography-los-angeles` · **Шаблон:** Service page
 **Title:** Family Photographer in Los Angeles | ThereYare
-**Meta description:** Unposed family photography across Los Angeles — studio, at home or outdoors. Sessions from $[ ], private gallery in two weeks.
+**Meta description:** Unposed family photography across Los Angeles — studio, at home or outdoors. Family sessions $800 for two hours, travel within 30 miles included.
 **H1:** Family photography in Los Angeles
 **Отрывок:** Studio, your living room or a park with good light — family sessions where nobody has to say cheese.
 
-**Текст страницы** (паттерны: How it goes → FAQ → Packages):
+**Текст страницы** (паттерны: How it goes → FAQ → Pricing conditions):
 
 > Most families book us because of the same sentence: *we have a thousand photos on our phones and I'm in four of them.*
 >
@@ -164,7 +169,7 @@ H1 и вступление уже в шаблоне. При желании по�
 
 **Slug:** `wedding-photography-los-angeles`
 **Title:** Wedding Photographer in Los Angeles | ThereYare
-**Meta description:** Documentary wedding photography in Los Angeles with an editorial eye. Coverage from $[ ].
+**Meta description:** Documentary wedding photography in Los Angeles with an editorial eye. Coverage from $1,600 for four hours, two photographers.
 **H1:** Wedding photography in Los Angeles
 **Отрывок:** Documentary coverage with an editorial eye — your day as it happened, at its best.
 
@@ -176,11 +181,27 @@ H1 и вступление уже в шаблоне. При желании по�
 
 ---
 
+### Услуга: съёмка беременности
+
+**Slug:** `maternity-photography-los-angeles`
+**Title:** Maternity Photographer in Los Angeles | ThereYare
+**Meta description:** Maternity photography in Los Angeles — $700 for two hours. Partner and older children welcome, lighting included at your home.
+**H1:** Maternity photography in Los Angeles
+**Отрывок:** The last weeks before everything changes, photographed while they're still happening.
+
+> There is a narrow window here, and most people miss it. Too early and it doesn't read; too late and you're too tired to want to. Around 30 to 34 weeks is usually right, though we've shot later and it worked.
+>
+> Bring your partner, bring the older children — the photographs where a toddler is talking to the bump are the ones people frame.
+>
+> We shoot at home more often than in the studio for this one. Your own light, your own rooms, and nobody has to go anywhere.
+
+---
+
 ### Услуга: портреты родителей
 
 **Slug:** `motherhood-photography-los-angeles`
 **Title:** Motherhood & Parent Portraits in Los Angeles | ThereYare
-**Meta description:** Portraits of mothers and fathers in Los Angeles — with their children or alone. Sessions from $[ ].
+**Meta description:** Portraits of mothers and fathers in Los Angeles — with their children or alone. Sessions $400 for ninety minutes.
 **H1:** Portraits of mothers and fathers
 **Отрывок:** The parent, not just the parent-of.
 
@@ -214,11 +235,11 @@ H1 и вступление уже в шаблоне. При желании по�
 
 **Slug:** `pricing` · **Шаблон:** Pricing page
 **Title:** Pricing | ThereYare Photography, Los Angeles
-**Meta description:** Clear prices for family, children's, party and wedding photography in Los Angeles. Sessions from $[ ].
+**Meta description:** Clear prices for family, children's, party and wedding photography in Los Angeles. Sessions $400 for ninety minutes.
 **H1:** Pricing
 **Отрывок:** Clear prices, no hidden fees. Pick the kind of day, then the package that fits.
 
-Вставить паттерн **Packages** — шесть раз, по одному на направление, каждый под своим H2. **Цены в паттерне сейчас взяты с потолка, замени на свои.**
+Вставить паттерн **Pricing — all seven sessions**. Он содержит все семь карточек с твоими реальными ценами и блок общих условий (ассистент, свет, аренда студии, выезд).
 
 ---
 
@@ -251,7 +272,7 @@ H1 и вступление уже в шаблоне. При желании по�
 
 ## 5. Порядок сборки
 
-1. Создать одиннадцать страниц выше с точными slug'ами.
+1. Создать двенадцать страниц выше с точными slug'ами.
 2. Назначить шаблоны (справа в редакторе, «Шаблон»).
 3. Вставить паттерны, заменить текст и фото.
 4. Опубликовать 3–5 съёмок в Portfolio — галереи появятся сами.
@@ -277,12 +298,44 @@ H1 и вступление уже в шаблоне. При желании по�
 
 ---
 
-## 7. Что нужно от тебя
+## 7. Данные студии — заполнено
 
-- Цены по шести направлениям
-- Твоё имя как фотографа — уходит в разметку Person, связывает работы с тобой лично
-- Телефон, email, Instagram
-- Районы обслуживания
-- Кто за камерой: один человек или команда
-- Фотографии: hero, 6 плиток галерей, 6 плиток услуг, 3–5 съёмок целиком
-- Реальные отзывы
+| | |
+|---|---|
+| Бренд | ThereYare |
+| Ведущий фотограф | Alexandr Mukhin — уходит в разметку Person |
+| Телефон | +1 747 217 9834 |
+| Email | mukhinpro@gmail.com |
+| Instagram | [@thereyare_studio](https://www.instagram.com/thereyare_studio/) |
+| Команда | Фотограф + ассистент на всех съёмках; на свадьбах второй фотограф |
+| География | LA и округ, выезд до 30 миль включён |
+| Адрес | Офис есть, но в Google Business Profile скрыт (см. раздел 6) |
+| Языки | Только английский |
+
+Всё это уже проставлено дефолтами в теме: **Внешний вид → Настроить → Studio details**. Проверь и поправь, если что-то изменится.
+
+---
+
+## 8. Что ещё нужно
+
+**Блокирует запуск:**
+
+- **Фотографии** — hero, 7 плиток галерей, 7 плиток услуг, 3–5 съёмок целиком. Загружаешь через админку.
+- **Домен** — `thereyare.com` занят. Проверить `thereyarestudio.com` (совпадает с ником в Instagram) и купить.
+
+**Не блокирует, добавим по ходу:**
+
+- Отзывы клиентов — реальные, с указанием района.
+- Список районов LA для Google Business Profile.
+- Адрес офиса и индекс — для разметки на сайте.
+- Год основания студии.
+
+---
+
+## 9. Три замечания по брифу
+
+**Почта.** `mukhinpro@gmail.com` работает, но `hello@thereyarestudio.com` на своём домене читается солиднее и сам по себе служит сигналом доверия — и для клиента, и для Google. Настраивается на хостинге бесплатно, письма можно пересылать на тот же Gmail. Рекомендую сделать до запуска.
+
+**Твои публикации.** Ты снимал для FLG Magazine, Kids Magazine и Elements. Для Google это сильный сигнал экспертности — из тех, что реально влияют на позиции в конкурентной нише. Стоит вернуть на страницу About и в разметку Person. Скажи, какие издания указывать точно, и я впишу.
+
+**Свадебный минимум.** $1600 за 4 часа — это половина смены. Большинство свадеб длится 8–10 часов, и пара, увидев только цифру за полдня, может решить, что ты не берёшь полные дни. На странице цен я написал «longer days quoted with the date», но лучше назвать вторую цифру — за полный день. Скажи её, добавлю.

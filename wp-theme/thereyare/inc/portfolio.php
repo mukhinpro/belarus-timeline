@@ -90,6 +90,7 @@ add_action(
 			'Kids and teens'    => 'kids',
 			'Birthday parties'  => 'parties',
 			'Weddings'          => 'weddings',
+			'Maternity'         => 'maternity',
 			'Motherhood'        => 'motherhood',
 			'Model portfolios'  => 'model-portfolios',
 		];

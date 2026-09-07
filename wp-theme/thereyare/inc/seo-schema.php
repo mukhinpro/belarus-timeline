@@ -118,6 +118,7 @@ function thereyare_business_node(): array {
 				'Children and teen portrait photography',
 				'Kids birthday party photography',
 				'Wedding photography',
+				'Maternity photography',
 				'Motherhood and parent portrait photography',
 				'Child model portfolio and agency comp card photography',
 			]

@@ -18,17 +18,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 function thereyare_setting_fields(): array {
 	return [
 		'thereyare_studio_name' => [ 'Studio name', '', 'text' ],
-		'thereyare_photographer' => [ 'Lead photographer — full name', '', 'text' ],
-		'thereyare_phone'       => [ 'Phone', '', 'text' ],
-		'thereyare_email'       => [ 'Email', '', 'text' ],
-		'thereyare_instagram'   => [ 'Instagram URL', '', 'url' ],
+		'thereyare_photographer' => [ 'Lead photographer — full name', 'Alexandr Mukhin', 'text' ],
+		'thereyare_phone'       => [ 'Phone', '+1 747 217 9834', 'text' ],
+		'thereyare_email'       => [ 'Email', 'mukhinpro@gmail.com', 'text' ],
+		'thereyare_instagram'   => [ 'Instagram URL', 'https://www.instagram.com/thereyare_studio/', 'url' ],
 		'thereyare_street'      => [ 'Street address (office)', '', 'text' ],
 		'thereyare_postcode'    => [ 'Postal code', '', 'text' ],
 		'thereyare_city'        => [ 'Base city', 'Los Angeles', 'text' ],
 		'thereyare_region'      => [ 'State code', 'CA', 'text' ],
 		'thereyare_areas'       => [ 'Areas served (comma separated)', 'Los Angeles, Santa Monica, Malibu, Pasadena, Orange County', 'text' ],
 		'thereyare_price_range' => [ 'Price range (for Google)', '$$', 'text' ],
-		'thereyare_price_from'  => [ 'Lowest session price, digits only', '450', 'text' ],
+		'thereyare_price_from'  => [ 'Lowest session price, digits only', '360', 'text' ],
 		'thereyare_founded'     => [ 'Year founded', '', 'text' ],
 	];
 }
