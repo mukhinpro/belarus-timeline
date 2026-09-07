@@ -8,9 +8,13 @@
  * Viewport Width: 1400
  */
 ?>
-<!-- wp:group {"tagName":"section","align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|70"}}},"layout":{"type":"constrained"}} -->
-<section class="wp-block-group alignwide" style="margin-top:var(--wp--preset--spacing--70)"><!-- wp:columns {"verticalAlignment":"center","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|40","left":"var:preset|spacing|60"}}}} -->
-<div class="wp-block-columns are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center"} -->
+<!-- wp:separator {"className":"md-seam","backgroundColor":"seam"} -->
+<hr class="wp-block-separator has-text-color has-seam-color has-alpha-channel-opacity has-seam-background-color has-background md-seam"/>
+<!-- /wp:separator -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|30","right":"var:preset|spacing|30"}}},"backgroundColor":"terracotta","textColor":"pearl","layout":{"type":"constrained","wideSize":"1320px"}} -->
+<section class="wp-block-group alignfull has-pearl-color has-terracotta-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--30)"><!-- wp:columns {"verticalAlignment":"center","align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|40","left":"var:preset|spacing|60"}}}} -->
+<div class="wp-block-columns alignwide are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center"} -->
 <div class="wp-block-column is-vertically-aligned-center"><!-- wp:paragraph {"className":"md-eyebrow"} -->
 <p class="md-eyebrow">Private access</p>
 <!-- /wp:paragraph -->

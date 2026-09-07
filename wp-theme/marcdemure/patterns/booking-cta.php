@@ -8,8 +8,12 @@
  * Viewport Width: 1400
  */
 ?>
-<!-- wp:group {"tagName":"section","align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|70"},"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}},"backgroundColor":"coal","layout":{"type":"constrained"}} -->
-<section class="wp-block-group alignwide has-coal-background-color has-background" style="margin-top:var(--wp--preset--spacing--70);padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--40)"><!-- wp:heading {"textAlign":"center","level":2} -->
+<!-- wp:separator {"className":"md-seam","backgroundColor":"seam"} -->
+<hr class="wp-block-separator has-text-color has-seam-color has-alpha-channel-opacity has-seam-background-color has-background md-seam"/>
+<!-- /wp:separator -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}},"backgroundColor":"terracotta","textColor":"pearl","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-pearl-color has-terracotta-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--40)"><!-- wp:heading {"textAlign":"center","level":2} -->
 <h2 class="wp-block-heading has-text-align-center">Still deciding? That is normal.</h2>
 <!-- /wp:heading -->
 

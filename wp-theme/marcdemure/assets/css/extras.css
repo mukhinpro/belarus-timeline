@@ -53,9 +53,9 @@
 .md-btn {
 	display: inline-block;
 	padding: 15px 32px;
-	border: 1px solid var(--wp--preset--color--brass);
-	background: var(--wp--preset--color--brass);
-	color: var(--wp--preset--color--ink);
+	border: 1px solid var(--wp--preset--color--terracotta);
+	background: var(--wp--preset--color--terracotta);
+	color: var(--wp--preset--color--pearl);
 	font-family: var(--wp--preset--font-family--body);
 	font-size: 0.8125rem;
 	font-weight: 500;
@@ -83,8 +83,8 @@
 .md-btn--quiet:hover,
 .md-btn--quiet:focus-visible {
 	background: transparent;
-	border-color: var(--wp--preset--color--brass);
-	color: var(--wp--preset--color--brass);
+	border-color: var(--wp--preset--color--terracotta);
+	color: var(--wp--preset--color--terracotta);
 }
 
 /* --- Access panel ------------------------------------------------------ */
@@ -100,7 +100,7 @@
 	margin: 0 0 18px;
 	padding-bottom: 18px;
 	border-bottom: 1px solid var(--wp--preset--color--line);
-	color: var(--wp--preset--color--brass);
+	color: var(--wp--preset--color--terracotta);
 	font-size: 0.9375rem;
 }
 
@@ -127,10 +127,62 @@
 	letter-spacing: 0.02em;
 }
 
+/* --- The two grounds --------------------------------------------------
+   Black plaster and terracotta plaster, and a single pale seam where they
+   meet. Nothing else marks the join.                                    */
+
+.md-seam {
+	height: 1px;
+	border: 0;
+	margin: 0;
+	background: var(--wp--preset--color--seam);
+	opacity: 0.85;
+}
+
+.has-terracotta-background-color {
+	background-image:
+		radial-gradient(90% 70% at 20% 10%, rgba(255, 190, 150, 0.10), transparent 60%),
+		radial-gradient(80% 60% at 85% 90%, rgba(60, 20, 8, 0.28), transparent 65%);
+}
+
+.has-terracotta-background-color .has-ash-color,
+.has-terracotta-background-color .md-panel__note {
+	color: #F1DCCB;
+}
+
+.has-terracotta-background-color .md-eyebrow,
+.has-terracotta-background-color .wp-block-details summary::after {
+	color: var(--wp--preset--color--seam);
+}
+
+.has-terracotta-background-color .md-panel {
+	border-color: rgba(239, 230, 214, 0.25);
+	background: rgba(12, 11, 10, 0.28);
+}
+
+.has-terracotta-background-color .md-btn {
+	background: var(--wp--preset--color--pearl);
+	border-color: var(--wp--preset--color--pearl);
+	color: var(--wp--preset--color--ink);
+}
+
+.has-terracotta-background-color .md-btn:hover,
+.has-terracotta-background-color .md-btn:focus-visible {
+	background: var(--wp--preset--color--ink);
+	border-color: var(--wp--preset--color--ink);
+	color: var(--wp--preset--color--pearl);
+}
+
+.has-terracotta-background-color .md-btn--quiet {
+	background: transparent;
+	border-color: rgba(239, 230, 214, 0.5);
+	color: var(--wp--preset--color--pearl);
+}
+
 /* --- Portfolio -------------------------------------------------------- */
 
 .md-eyebrow {
-	color: var(--wp--preset--color--brass);
+	color: var(--wp--preset--color--terracotta);
 	font-size: 0.75rem;
 	font-weight: 500;
 	letter-spacing: 0.22em;
@@ -173,7 +225,7 @@
 }
 
 .md-crumbs a:hover {
-	color: var(--wp--preset--color--brass);
+	color: var(--wp--preset--color--terracotta);
 }
 
 .md-crumbs__sep {
@@ -202,7 +254,7 @@
 .wp-block-details summary::after {
 	content: "+";
 	float: right;
-	color: var(--wp--preset--color--brass);
+	color: var(--wp--preset--color--terracotta);
 }
 
 .wp-block-details[open] summary::after {
@@ -212,6 +264,6 @@
 /* --- Focus ------------------------------------------------------------ */
 
 :where(a, button, summary, input, textarea):focus-visible {
-	outline: 2px solid var(--wp--preset--color--brass);
+	outline: 2px solid var(--wp--preset--color--terracotta);
 	outline-offset: 3px;
 }

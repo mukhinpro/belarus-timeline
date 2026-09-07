@@ -15,8 +15,8 @@
 <h3 class="wp-block-heading has-large-font-size">Women</h3>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph {"style":{"typography":{"fontStyle":"normal","fontWeight":"300"}},"textColor":"brass","fontSize":"x-large"} -->
-<p class="has-brass-color has-text-color has-x-large-font-size" style="font-style:normal;font-weight:300">$650</p>
+<!-- wp:paragraph {"style":{"typography":{"fontStyle":"normal","fontWeight":"300"}},"textColor":"terracotta","fontSize":"x-large"} -->
+<p class="has-terracotta-color has-text-color has-x-large-font-size" style="font-style:normal;font-weight:300">$650</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"textColor":"ash","fontSize":"small"} -->
@@ -29,8 +29,8 @@
 <h3 class="wp-block-heading has-large-font-size">Men</h3>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph {"style":{"typography":{"fontStyle":"normal","fontWeight":"300"}},"textColor":"brass","fontSize":"x-large"} -->
-<p class="has-brass-color has-text-color has-x-large-font-size" style="font-style:normal;font-weight:300">$650</p>
+<!-- wp:paragraph {"style":{"typography":{"fontStyle":"normal","fontWeight":"300"}},"textColor":"terracotta","fontSize":"x-large"} -->
+<p class="has-terracotta-color has-text-color has-x-large-font-size" style="font-style:normal;font-weight:300">$650</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"textColor":"ash","fontSize":"small"} -->
@@ -38,13 +38,13 @@
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40","right":"var:preset|spacing|40"},"blockGap":"10px"},"border":{"color":"var:preset|color|brass","width":"1px"}},"backgroundColor":"coal","layout":{"type":"constrained"}} -->
-<div class="wp-block-group has-border-color has-brass-border-color has-coal-background-color has-background" style="border-width:1px;padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)"><!-- wp:heading {"level":3,"fontSize":"large"} -->
+<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40","right":"var:preset|spacing|40"},"blockGap":"10px"},"border":{"color":"var:preset|color|terracotta","width":"1px"}},"backgroundColor":"coal","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-border-color has-terracotta-border-color has-coal-background-color has-background" style="border-width:1px;padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)"><!-- wp:heading {"level":3,"fontSize":"large"} -->
 <h3 class="wp-block-heading has-large-font-size">Couples</h3>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph {"style":{"typography":{"fontStyle":"normal","fontWeight":"300"}},"textColor":"brass","fontSize":"x-large"} -->
-<p class="has-brass-color has-text-color has-x-large-font-size" style="font-style:normal;font-weight:300">$900</p>
+<!-- wp:paragraph {"style":{"typography":{"fontStyle":"normal","fontWeight":"300"}},"textColor":"terracotta","fontSize":"x-large"} -->
+<p class="has-terracotta-color has-text-color has-x-large-font-size" style="font-style:normal;font-weight:300">$900</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"textColor":"ash","fontSize":"small"} -->
