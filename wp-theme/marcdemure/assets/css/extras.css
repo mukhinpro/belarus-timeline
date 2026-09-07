@@ -128,13 +128,14 @@
 }
 
 /* --- The two grounds --------------------------------------------------
-   Black plaster and terracotta plaster, one pale seam where they meet. The
-   plaster is a real tile (assets/img/plaster.png), multiplied over the
-   colour, so every terracotta surface — sections, buttons, the price
-   cards — carries the same mottling as the reference wall.               */
+   Lime plaster, both halves, from two real tiles in assets/img: broad soft
+   clouds of tone, a few diagonal trowel sweeps, rare hairline scratches.
+   Colour is baked into each tile, so nothing here blends or overlays — the
+   wall is simply the background, and a button is a small piece of it.    */
 
 :root {
-	--md-plaster: url("../img/plaster.png");
+	--md-terracotta-wall: url("../img/plaster-terracotta.jpg");
+	--md-black-wall: url("../img/plaster-black.jpg");
 }
 
 .md-seam {
@@ -142,48 +143,40 @@
 	border: 0;
 	margin: 0;
 	background: var(--wp--preset--color--seam);
-	opacity: 0.85;
+	opacity: 0.9;
 }
 
-.md-plaster,
+/* Every terracotta surface is the wall itself. */
 .has-terracotta-background-color,
-.wp-element-button,
-.md-btn {
-	position: relative;
-	isolation: isolate;
-}
-
-.md-plaster::before,
-.has-terracotta-background-color::before,
-.wp-element-button::before,
-.md-btn::before {
-	content: "";
-	position: absolute;
-	inset: 0;
-	z-index: -1;
-	pointer-events: none;
-	background-image: var(--md-plaster);
-	background-size: 420px 420px;
-	mix-blend-mode: overlay;
-	opacity: 0.85;
-}
-
-.md-btn--quiet::before,
-.is-style-outline .wp-element-button::before {
-	display: none;
-}
-
-.has-terracotta-background-color {
+.md-btn,
+.wp-element-button {
 	background-color: var(--wp--preset--color--terracotta);
-	background-image:
-		radial-gradient(70% 60% at 14% 6%, rgba(255, 176, 120, 0.16), transparent 62%),
-		radial-gradient(60% 50% at 88% 94%, rgba(70, 20, 6, 0.42), transparent 66%),
-		radial-gradient(38% 30% at 62% 46%, rgba(255, 150, 96, 0.08), transparent 70%);
+	background-image: var(--md-terracotta-wall);
+	background-size: 900px 900px;
+	background-attachment: scroll;
 }
 
-.has-terracotta-background-color::before {
-	background-size: 640px 640px;
-	opacity: 1;
+/* The darker corner from the reference, laid over the tile per section so
+   it never repeats with the tile. */
+.has-terracotta-background-color {
+	background-image:
+		radial-gradient(70% 55% at 90% 100%, rgba(60, 18, 4, 0.45), transparent 66%),
+		radial-gradient(60% 50% at 8% 4%, rgba(255, 170, 110, 0.10), transparent 60%),
+		var(--md-terracotta-wall);
+}
+
+.md-btn--quiet,
+.is-style-outline .wp-element-button {
+	background-image: none;
+	background-color: transparent;
+}
+
+/* The black plaster, faint, on the surfaces that frame the page. */
+.wp-site-blocks > header,
+.wp-site-blocks > footer,
+.has-coal-background-color {
+	background-image: var(--md-black-wall);
+	background-size: 900px 900px;
 }
 
 .has-terracotta-background-color .has-ash-color,
@@ -199,6 +192,7 @@
 .has-terracotta-background-color .md-panel {
 	border-color: rgba(239, 230, 214, 0.25);
 	background: rgba(12, 11, 10, 0.30);
+	background-image: none;
 }
 
 .has-terracotta-background-color .md-btn,
@@ -206,11 +200,6 @@
 	background: var(--wp--preset--color--pearl);
 	border-color: var(--wp--preset--color--pearl);
 	color: var(--wp--preset--color--ink);
-}
-
-.has-terracotta-background-color .md-btn::before,
-.has-terracotta-background-color .wp-element-button::before {
-	display: none;
 }
 
 .has-terracotta-background-color .md-btn:hover,

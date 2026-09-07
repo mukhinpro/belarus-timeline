@@ -46,7 +46,7 @@
 				},
 				{
 					"slug": "terracotta",
-					"color": "#B5501F",
+					"color": "#A6461B",
 					"name": "Terracotta"
 				},
 				{
@@ -56,7 +56,7 @@
 				},
 				{
 					"slug": "terracotta-deep",
-					"color": "#8C3A15",
+					"color": "#682A0E",
 					"name": "Terracotta, deep"
 				}
 			]
