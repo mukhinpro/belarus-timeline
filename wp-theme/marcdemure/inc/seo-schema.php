@@ -343,6 +343,13 @@ add_action(
 			];
 		}
 
+		/**
+		 * Lets other parts of the theme add nodes for the page they know about.
+		 *
+		 * @param array<int, array<string, mixed>> $graph
+		 */
+		$graph = apply_filters( 'md_schema_graph', $graph );
+
 		printf(
 			'<script type="application/ld+json">%s</script>' . "\n",
 			wp_json_encode(
@@ -379,13 +386,181 @@ add_action(
 		printf( '<meta property="og:site_name" content="%s">' . "\n", esc_attr( get_bloginfo( 'name' ) ) );
 		printf( '<meta name="twitter:card" content="summary_large_image">' . "\n" );
 
-		if ( is_singular() && has_post_thumbnail() ) {
-			$image = get_the_post_thumbnail_url( get_queried_object_id(), 'md-sheet' );
+		$image = is_singular() && has_post_thumbnail()
+			? get_the_post_thumbnail_url( get_queried_object_id(), 'md-sheet' )
+			: get_site_icon_url( 512 );
 
-			if ( $image ) {
-				printf( '<meta property="og:image" content="%s">' . "\n", esc_url( $image ) );
-			}
+		if ( $image ) {
+			printf( '<meta property="og:image" content="%s">' . "\n", esc_url( $image ) );
 		}
 	},
 	6
+);
+
+/**
+ * Which service does a page describe? Read from the slug, so the schema
+ * follows the URL the photographer chose without a settings screen.
+ *
+ * @return array{name: string, type: string, price: string}|null
+ */
+function md_service_for_page(): ?array {
+	if ( ! is_page() || 'page-service' !== get_page_template_slug( get_queried_object_id() ) ) {
+		return null;
+	}
+
+	$slug   = (string) get_post_field( 'post_name', get_queried_object_id() );
+	$offers = md_service_offers();
+
+	if ( str_contains( $slug, 'couple' ) ) {
+		return $offers[2];
+	}
+
+	if ( str_contains( $slug, 'men' ) && ! str_contains( $slug, 'women' ) ) {
+		return $offers[1];
+	}
+
+	return $offers[0];
+}
+
+/**
+ * A Service node on each service page, tied to the studio and priced.
+ */
+add_filter(
+	'md_schema_graph',
+	function ( array $graph ): array {
+		$service = md_service_for_page();
+
+		if ( ! $service ) {
+			return $graph;
+		}
+
+		$graph[] = [
+			'@type'       => 'Service',
+			'@id'         => md_current_url() . '#service',
+			'name'        => get_the_title(),
+			'serviceType' => $service['type'],
+			'provider'    => [ '@id' => home_url( '/#studio' ) ],
+			'areaServed'  => [ '@type' => 'City', 'name' => md_setting( 'md_city' ) ],
+			'url'         => md_current_url(),
+			'offers'      => [
+				'@type'         => 'Offer',
+				'priceCurrency' => 'USD',
+				'price'         => $service['price'],
+				'url'           => home_url( '/pricing/' ),
+			],
+		];
+
+		return $graph;
+	}
+);
+
+/**
+ * A meta description when no SEO plugin supplies one.
+ *
+ * The excerpt if the photographer wrote one; otherwise the first real
+ * paragraph of the page, cut at a word boundary. Archives use the term or
+ * post-type description. Never the site tagline repeated on every page —
+ * that is what Google ignores.
+ */
+function md_meta_description(): string {
+	$text = '';
+
+	if ( is_singular() ) {
+		$post = get_queried_object();
+
+		if ( $post instanceof WP_Post ) {
+			$text = has_excerpt( $post ) ? get_the_excerpt( $post ) : md_first_paragraph( (string) $post->post_content );
+		}
+	} elseif ( is_tax() || is_category() || is_tag() ) {
+		$text = term_description();
+	} elseif ( is_post_type_archive( 'shoot' ) ) {
+		$text = 'Boudoir photography portfolio, Los Angeles: women, men and couples, each published with written permission.';
+	} elseif ( is_front_page() ) {
+		$text = get_bloginfo( 'description' );
+	}
+
+	$text = trim( preg_replace( '/\s+/', ' ', wp_strip_all_tags( (string) $text ) ) );
+
+	if ( mb_strlen( $text ) > 158 ) {
+		$text = mb_substr( $text, 0, 158 );
+		$text = mb_substr( $text, 0, (int) mb_strrpos( $text, ' ' ) ) . '…';
+	}
+
+	return $text;
+}
+
+function md_first_paragraph( string $content ): string {
+	if ( ! has_blocks( $content ) ) {
+		return $content;
+	}
+
+	$found = '';
+
+	md_walk_blocks(
+		parse_blocks( $content ),
+		static function ( array $block ) use ( &$found ): void {
+			if ( '' !== $found || 'core/paragraph' !== ( $block['blockName'] ?? '' ) ) {
+				return;
+			}
+			$text = trim( wp_strip_all_tags( (string) ( $block['innerHTML'] ?? '' ) ) );
+			if ( mb_strlen( $text ) > 40 ) {
+				$found = $text;
+			}
+		}
+	);
+
+	return $found;
+}
+
+add_action(
+	'wp_head',
+	function () {
+		if ( defined( 'RANK_MATH_VERSION' ) || defined( 'WPSEO_VERSION' ) || defined( 'SEOPRESS_VERSION' ) ) {
+			return;
+		}
+
+		if ( is_singular( 'private_set' ) || is_post_type_archive( 'private_set' ) || is_search() || is_404() ) {
+			return;
+		}
+
+		$description = md_meta_description();
+
+		if ( '' !== $description ) {
+			printf( '<meta name="description" content="%s">' . "\n", esc_attr( $description ) );
+			printf( '<meta property="og:description" content="%s">' . "\n", esc_attr( $description ) );
+		}
+	},
+	4
+);
+
+/**
+ * Search result pages are duplicates of everything else and should not rank.
+ */
+add_action(
+	'wp_head',
+	function () {
+		if ( is_search() ) {
+			echo '<meta name="robots" content="noindex, follow">' . "\n";
+		}
+	},
+	1
+);
+
+/**
+ * robots.txt: point at the sitemap, and keep crawlers away from the member
+ * area and the file endpoint. Belt and braces — both already send noindex.
+ */
+add_filter(
+	'robots_txt',
+	function ( string $output ): string {
+		$lines = [
+			'Disallow: /private/',
+			'Disallow: /*?md_file=',
+			'Disallow: /wp-content/uploads/md-private/',
+			'',
+			'Sitemap: ' . home_url( '/wp-sitemap.xml' ),
+		];
+
+		return rtrim( $output ) . "\n" . implode( "\n", $lines ) . "\n";
+	}
 );

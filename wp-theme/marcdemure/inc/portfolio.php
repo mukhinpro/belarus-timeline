@@ -93,15 +93,30 @@ add_action(
 add_action(
 	'after_switch_theme',
 	function () {
+		/*
+		 * Each archive gets a real description, because an archive that is
+		 * only a grid of thumbnails is a thin page to Google and says nothing
+		 * to a person. The photographer can rewrite these under Portfolio →
+		 * Portfolio sections.
+		 */
 		$sections = [
-			'Women'   => 'women',
-			'Men'     => 'men',
-			'Couples' => 'couples',
+			'women'   => [
+				'name'        => 'Women',
+				'description' => 'Boudoir photography for women in Los Angeles: studio and location sessions, soft and hard light, published only with each woman\'s written permission. Every session here is a real client, not a model.',
+			],
+			'men'     => [
+				'name'        => 'Men',
+				'description' => 'Men\'s boudoir and intimate portraiture in Los Angeles. Hard light, shadow and shape, for men who have rarely been photographed properly. Each set here was published with a signed release.',
+			],
+			'couples' => [
+				'name'        => 'Couples',
+				'description' => 'Couples boudoir in Los Angeles: two people photographed together, at home or in a studio, the way they are when nobody is watching. Shown here with both partners\' written permission.',
+			],
 		];
 
-		foreach ( $sections as $name => $slug ) {
+		foreach ( $sections as $slug => $section ) {
 			if ( ! term_exists( $slug, 'shoot_type' ) ) {
-				wp_insert_term( $name, 'shoot_type', [ 'slug' => $slug ] );
+				wp_insert_term( $section['name'], 'shoot_type', [ 'slug' => $slug, 'description' => $section['description'] ] );
 			}
 		}
 

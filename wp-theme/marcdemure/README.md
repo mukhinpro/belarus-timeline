@@ -94,9 +94,9 @@ an active subscription.
 | Title | Slug | Template |
 |---|---|---|
 | Home | `home` | default |
-| Boudoir Photography in Los Angeles | `boudoir-photography-los-angeles` | Service page |
-| Men's Boudoir in Los Angeles | `mens-boudoir-los-angeles` | Service page |
-| Couples Boudoir in Los Angeles | `couples-boudoir-los-angeles` | Service page |
+| Boudoir Photography in Los Angeles | `boudoir-photography-los-angeles` | Service page → insert pattern *Service page: women's boudoir* |
+| Men's Boudoir in Los Angeles | `mens-boudoir-los-angeles` | Service page → insert pattern *Service page: men's boudoir* |
+| Couples Boudoir in Los Angeles | `couples-boudoir-los-angeles` | Service page → insert pattern *Service page: couples boudoir* |
 | Pricing | `pricing` | Pricing page |
 | Private access | `private` | Private access page |
 | Discretion | `discretion` | default |
@@ -105,7 +105,28 @@ an active subscription.
 | Privacy | `privacy` | default |
 | Terms | `terms` | default |
 
-The slug `private` matters: the gate redirects there by name.
+The slug `private` matters: the gate redirects there by name. The service
+slugs matter too: the Service schema reads `men`/`couple` from the slug to
+pick the right price, so keep those words in.
+
+## What the theme does for indexing
+
+- Meta description on every page, from the excerpt or the first paragraph —
+  never the tagline repeated site-wide. Steps aside when Rank Math, Yoast or
+  SEOPress is active.
+- JSON-LD: LocalBusiness with priced offers, Person, WebSite, BreadcrumbList,
+  a Service node on each service page, ImageGallery on each shoot, and FAQPage
+  built from whatever Details blocks are on the page.
+- Canonical and Open Graph fallbacks, with the site icon as the default image.
+- Search results and the whole member area send `noindex`; `robots.txt` also
+  disallows `/private/`, the file endpoint and the private uploads folder, and
+  points at the sitemap.
+- The three gallery archives get real descriptions on activation, so they are
+  not thin pages. Rewrite them under **Portfolio → Portfolio sections**.
+- Core's sitemap already lists pages, shoots and the three sections.
+
+After launch: add the site in Google Search Console, submit `/wp-sitemap.xml`,
+and check that nothing under `/private/` is listed.
 
 Galleries at `/portfolio/` and `/gallery/women|men|couples/` create themselves
 once the first shoot is published.
