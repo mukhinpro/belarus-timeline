@@ -349,6 +349,20 @@
 			"postTypes": [
 				"page"
 			]
+		},
+		{
+			"name": "page-gift",
+			"title": "Gift certificate page",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "page-location",
+			"title": "Studio page",
+			"postTypes": [
+				"page"
+			]
 		}
 	]
 }

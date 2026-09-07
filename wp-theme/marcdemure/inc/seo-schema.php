@@ -277,7 +277,10 @@ function md_breadcrumb_trail(): array {
 		$trail[] = [ 'label' => get_the_title(), 'url' => (string) get_permalink() ];
 	}
 
-	return $trail;
+	/**
+	 * @param array<int, array{label: string, url: string}> $trail
+	 */
+	return apply_filters( 'md_breadcrumb_trail', $trail );
 }
 
 function md_current_url(): string {
@@ -419,6 +422,7 @@ function md_service_for_page(): ?array {
 		return $offers[1];
 	}
 
+	// Bridal and plain women's boudoir are the same service at the same price.
 	return $offers[0];
 }
 
@@ -562,5 +566,96 @@ add_filter(
 		];
 
 		return rtrim( $output ) . "\n" . implode( "\n", $lines ) . "\n";
+	}
+);
+
+/**
+ * BlogPosting on journal entries, authored by the photographer, so the
+ * articles carry the same E-E-A-T signal as the rest of the site.
+ */
+add_filter(
+	'md_schema_graph',
+	function ( array $graph ): array {
+		if ( ! is_singular( 'post' ) ) {
+			return $graph;
+		}
+
+		$post = get_queried_object();
+
+		if ( ! $post instanceof WP_Post ) {
+			return $graph;
+		}
+
+		$node = [
+			'@type'            => 'BlogPosting',
+			'@id'              => md_current_url() . '#article',
+			'headline'         => get_the_title( $post ),
+			'description'      => md_meta_description(),
+			'url'              => md_current_url(),
+			'datePublished'    => get_the_date( 'c', $post ),
+			'dateModified'     => get_the_modified_date( 'c', $post ),
+			'author'           => [ '@id' => home_url( '/#photographer' ) ],
+			'publisher'        => [ '@id' => home_url( '/#studio' ) ],
+			'mainEntityOfPage' => md_current_url(),
+			'inLanguage'       => get_bloginfo( 'language' ),
+		];
+
+		if ( has_post_thumbnail( $post ) ) {
+			$node['image'] = get_the_post_thumbnail_url( $post, 'md-full' );
+		}
+
+		$graph[] = $node;
+
+		return $graph;
+	}
+);
+
+/**
+ * A Place on each studio page — the local-SEO node. The address comes from
+ * the page's own excerpt, one line, so the photographer never edits code.
+ */
+add_filter(
+	'md_schema_graph',
+	function ( array $graph ): array {
+		if ( ! is_page() || 'page-location' !== get_page_template_slug( get_queried_object_id() ) ) {
+			return $graph;
+		}
+
+		$graph[] = [
+			'@type'          => 'Place',
+			'@id'            => md_current_url() . '#place',
+			'name'           => get_the_title(),
+			'url'            => md_current_url(),
+			'address'        => [
+				'@type'           => 'PostalAddress',
+				'streetAddress'   => trim( wp_strip_all_tags( get_the_excerpt() ) ),
+				'addressLocality' => md_setting( 'md_city' ),
+				'addressRegion'   => md_setting( 'md_region' ),
+				'addressCountry'  => 'US',
+			],
+			'containedInPlace' => [ '@type' => 'City', 'name' => md_setting( 'md_city' ) ],
+		];
+
+		return $graph;
+	}
+);
+
+/**
+ * Journal breadcrumbs.
+ */
+add_filter(
+	'md_breadcrumb_trail',
+	function ( array $trail ): array {
+		if ( ! is_singular( 'post' ) ) {
+			return $trail;
+		}
+
+		$journal = get_option( 'page_for_posts' ) ? (string) get_permalink( (int) get_option( 'page_for_posts' ) ) : home_url( '/journal/' );
+
+		return [
+			[ 'label' => __( 'Home', 'marcdemure' ), 'url' => home_url( '/' ) ],
+			[ 'label' => __( 'Journal', 'marcdemure' ), 'url' => $journal ],
+			[ 'label' => get_the_title(), 'url' => (string) get_permalink() ],
+		];
 	}
 );

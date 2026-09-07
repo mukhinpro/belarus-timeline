@@ -27,6 +27,8 @@ function md_settings_fields(): array {
 		],
 		'md_price_from'   => [ 'default' => '650', 'label' => 'Lowest session price, digits only' ],
 		'md_founded'      => [ 'default' => '', 'label' => 'Year founded' ],
+		'md_booking_url'  => [ 'default' => '', 'label' => 'Scheduling link (Calendly or Acuity)', 'help' => 'The event or appointment link. Set up deposit collection inside that tool.' ],
+		'md_google_reviews' => [ 'default' => '', 'label' => 'Google reviews link', 'help' => 'The “write a review” link from your Google Business Profile.' ],
 	];
 }
 

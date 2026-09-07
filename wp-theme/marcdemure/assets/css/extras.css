@@ -303,3 +303,225 @@
 	outline: 2px solid var(--wp--preset--color--terracotta);
 	outline-offset: 3px;
 }
+
+/* --- Booking calendar ------------------------------------------------- */
+
+.md-calendar {
+	margin-top: var(--wp--preset--spacing--50);
+}
+
+.md-calendar__frame {
+	display: block;
+	width: 100%;
+	min-height: 720px;
+	border: 1px solid var(--wp--preset--color--line);
+	background: var(--wp--preset--color--coal);
+}
+
+.md-calendar--fallback {
+	padding: clamp(28px, 5vw, 48px);
+	border: 1px solid var(--wp--preset--color--line);
+	background: var(--wp--preset--color--coal);
+	text-align: center;
+}
+
+.md-calendar__lead {
+	margin: 0 0 22px;
+	font-family: var(--wp--preset--font-family--display);
+	font-size: clamp(1.375rem, 3.5vw, 1.875rem);
+	font-weight: 300;
+}
+
+.md-calendar__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	justify-content: center;
+	margin: 0;
+}
+
+.md-calendar__note {
+	margin: 16px 0 0;
+	color: var(--wp--preset--color--ash);
+	font-size: 0.8125rem;
+	text-align: center;
+}
+
+/* --- Testimonials ----------------------------------------------------- */
+
+.md-quote {
+	padding: var(--wp--preset--spacing--40) 0;
+	border-top: 1px solid var(--wp--preset--color--line);
+}
+
+.md-quote p:first-child {
+	font-family: var(--wp--preset--font-family--display);
+	font-size: clamp(1.25rem, 2.4vw, 1.625rem);
+	font-weight: 300;
+	line-height: 1.35;
+}
+
+.md-quote cite {
+	display: block;
+	margin-top: 12px;
+	color: var(--wp--preset--color--ash);
+	font-size: 0.8125rem;
+	font-style: normal;
+	letter-spacing: 0.06em;
+}
+
+/* --- Gift chooser (ported) ------------------------------------------- */
+
+/* ---------------------------------------------------------------
+   Gift certificate chooser
+   Cards are links first and a picker second, so they must read as
+   tappable before any script runs.
+------------------------------------------------------------------ */
+.md-gift__heading {
+	margin-top: var(--wp--preset--spacing--60);
+	margin-bottom: 6px;
+	font-size: clamp(1.5rem, 2.4vw, 2rem);
+}
+
+.md-gift__lede {
+	color: var(--wp--preset--color--ash);
+	max-width: 54ch;
+	margin-bottom: var(--wp--preset--spacing--40);
+}
+
+.md-gift__setup {
+	background: var(--wp--preset--color--smoke);
+	border-left: 3px solid var(--wp--preset--color--terracotta);
+	padding: 16px 20px;
+	border-radius: 2px;
+	max-width: 62ch;
+}
+
+.md-gift__grid {
+	display: grid;
+	gap: 16px;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.md-gift__grid--amounts {
+	grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+.md-gift__card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	height: 100%;
+	padding: 22px 24px;
+	border: 1.5px solid var(--wp--preset--color--line);
+	border-radius: 2px;
+	background: var(--wp--preset--color--ink);
+	text-decoration: none;
+	color: var(--wp--preset--color--pearl);
+	transition: border-color .16s ease, transform .16s ease;
+}
+
+.md-gift__card:hover {
+	border-color: var(--wp--preset--color--terracotta);
+	transform: translateY(-2px);
+}
+
+.md-gift__card.is-chosen {
+	border-color: var(--wp--preset--color--terracotta);
+	background: var(--wp--preset--color--smoke);
+}
+
+.md-gift__title {
+	font-family: var(--wp--preset--font-family--display);
+	font-weight: 600;
+	font-size: 1.125rem;
+	line-height: 1.2;
+}
+
+.md-gift__price {
+	font-family: var(--wp--preset--font-family--display);
+	font-weight: 700;
+	font-size: 1.75rem;
+	line-height: 1.1;
+	color: var(--wp--preset--color--terracotta);
+	font-variant-numeric: tabular-nums;
+}
+
+.md-gift__meta {
+	font-size: .8125rem;
+	color: var(--wp--preset--color--ash);
+	line-height: 1.5;
+}
+
+/* Tick shown only on the chosen card. */
+.md-gift__mark {
+	position: absolute;
+	top: 16px;
+	right: 18px;
+	width: 20px;
+	height: 20px;
+	border-radius: 2px;
+	background: var(--wp--preset--color--terracotta);
+	opacity: 0;
+	transition: opacity .16s ease;
+}
+
+.md-gift__mark::after {
+	content: "";
+	position: absolute;
+	left: 6px;
+	top: 4px;
+	width: 5px;
+	height: 10px;
+	border: solid var(--wp--preset--color--ink);
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
+}
+
+.md-gift__card.is-chosen .md-gift__mark {
+	opacity: 1;
+}
+
+/* Confirm bar. Sticks to the bottom on a phone, where the grid is long. */
+.md-gift__bar {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 18px;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: var(--wp--preset--spacing--50);
+	padding: 20px 24px;
+	background: var(--wp--preset--color--coal);
+	border-radius: 2px;
+}
+
+.md-gift__chosen {
+	margin: 0;
+	color: var(--wp--preset--color--ash);
+}
+
+.md-gift__chosen strong {
+	color: var(--wp--preset--color--pearl);
+}
+
+.md-gift__chosen-label {
+	font-size: .6875rem;
+	font-weight: 700;
+	letter-spacing: .14em;
+	text-transform: uppercase;
+	color: var(--wp--preset--color--terracotta);
+}
+
+.md-gift__bar {
+		position: sticky;
+		bottom: 12px;
+		box-shadow: 0 8px 28px rgba(26, 22, 20, .16);
+	}
+
+.md-gift__card,
+	.md-gift__card:hover,
+	.md-gift__mark {
+		transition: none;
+		transform: none;
+	}

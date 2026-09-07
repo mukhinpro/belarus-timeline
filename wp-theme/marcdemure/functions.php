@@ -21,6 +21,7 @@ require_once get_template_directory() . '/inc/protected-media.php';
 require_once get_template_directory() . '/inc/age-notice.php';
 require_once get_template_directory() . '/inc/seo-schema.php';
 require_once get_template_directory() . '/inc/performance.php';
+require_once get_template_directory() . '/inc/gift-certificates.php';
 
 add_action(
 	'after_setup_theme',
@@ -78,6 +79,8 @@ add_action(
 	'init',
 	function () {
 		register_block_type( get_template_directory() . '/blocks/breadcrumbs' );
+		register_block_type( get_template_directory() . '/blocks/gift-chooser' );
+		register_block_type( get_template_directory() . '/blocks/booking-calendar' );
 	}
 );
 

@@ -91,23 +91,69 @@ an active subscription.
 
 ## Pages to create
 
-| Title | Slug | Template |
-|---|---|---|
-| Home | `home` | default |
-| Boudoir Photography in Los Angeles | `boudoir-photography-los-angeles` | Service page → insert pattern *Service page: women's boudoir* |
-| Men's Boudoir in Los Angeles | `mens-boudoir-los-angeles` | Service page → insert pattern *Service page: men's boudoir* |
-| Couples Boudoir in Los Angeles | `couples-boudoir-los-angeles` | Service page → insert pattern *Service page: couples boudoir* |
-| Pricing | `pricing` | Pricing page |
-| Private access | `private` | Private access page |
-| Discretion | `discretion` | default |
-| About | `about` | default |
-| Book a session | `book` | Booking page |
-| Privacy | `privacy` | default |
-| Terms | `terms` | default |
+| Title | Slug | Template | Insert pattern |
+|---|---|---|---|
+| Home | `home` | default | — (front-page template) |
+| Boudoir Photography in Los Angeles | `boudoir-photography-los-angeles` | Service page | Service page: women's boudoir |
+| Men's Boudoir in Los Angeles | `mens-boudoir-los-angeles` | Service page | Service page: men's boudoir |
+| Couples Boudoir in Los Angeles | `couples-boudoir-los-angeles` | Service page | Service page: couples boudoir |
+| Bridal Boudoir in Los Angeles | `bridal-boudoir-los-angeles` | Service page | Service page: bridal boudoir |
+| Pricing | `pricing` | Pricing page | — |
+| Gift Certificates | `gift-certificates` | Gift certificate page | Gift certificate page |
+| Albums and Prints | `albums` | default | Albums and prints |
+| Before Your Session | `prepare-for-your-session` | default | Before your session |
+| Private access | `private` | Private access page | Private access page |
+| Discretion | `discretion` | default | Discretion + What clients say |
+| About | `about` | default | — |
+| Book a session | `book` | Booking page | — |
+| Journal | `journal` | default, empty | — then Settings → Reading → Posts page: Journal |
+| Model call | `model-call` | default | Model call |
+| Studio: Downtown | `studios/downtown-los-angeles` | Studio page | Studio page (fill the brackets; street address in the excerpt) |
+| Studio: Arts District | `studios/arts-district` | Studio page | Studio page |
+| Studio: Hollywood | `studios/hollywood` | Studio page | Studio page |
+| Privacy · Terms | `privacy` · `terms` | default | — |
+
+For the three studio pages, create a parent page `studios` first so the URLs nest.
 
 The slug `private` matters: the gate redirects there by name. The service
 slugs matter too: the Service schema reads `men`/`couple` from the slug to
 pick the right price, so keep those words in.
+
+## The journal
+
+Four articles ship as patterns under **Studio: whole pages** — what to wear,
+the week before, boudoir as a gift, hair and makeup. For each: **Posts → Add
+New**, type the title, insert the pattern, set a featured image, publish.
+The URL comes from the title; the articles link to each other by these slugs,
+so keep them: `what-to-wear-to-a-boudoir-shoot`,
+`the-week-before-a-boudoir-session`, `boudoir-as-an-anniversary-gift`,
+`do-you-need-hair-and-makeup-for-boudoir`.
+
+Each post carries BlogPosting structured data authored by the photographer.
+
+## Gift certificates
+
+Same mechanics as the ThereYare theme: one Stripe Payment Link per item under
+**Customize → Gift certificates**, automatic `MD-XXXX-XXXX` codes in
+**Certificates**, a printable PDF from the row action. No expiry, by
+California law — the copy says so and turns it into a selling point.
+
+## Booking calendar
+
+Paste a Calendly or Acuity link under **Customize → Studio details →
+Scheduling link**. The booking page embeds it; until then it shows the phone
+and email. Turn on deposit collection inside the scheduler (both take Stripe)
+so the $200 is paid at booking. The albums page sends `?add=album` to the
+booking page — map that to an intake question in the scheduler if you want to
+see it.
+
+## Testimonials and Google reviews
+
+The pattern ships with example quotes marked as examples. Replace them with
+real words — first name and neighbourhood only, which is what boudoir clients
+agree to. Paste the Google "write a review" link under **Customize → Studio
+details**. No review markup is emitted on purpose: self-serving review schema
+is against Google's guidelines.
 
 ## What the theme does for indexing
 
