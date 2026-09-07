@@ -17,6 +17,7 @@ require_once get_template_directory() . '/inc/settings.php';
 require_once get_template_directory() . '/inc/portfolio.php';
 require_once get_template_directory() . '/inc/seo-schema.php';
 require_once get_template_directory() . '/inc/performance.php';
+require_once get_template_directory() . '/inc/gift-certificates.php';
 
 add_action(
 	'after_setup_theme',
@@ -83,6 +84,7 @@ add_action(
 	'init',
 	function () {
 		register_block_type( get_template_directory() . '/blocks/breadcrumbs' );
+		register_block_type( get_template_directory() . '/blocks/gift-chooser' );
 	}
 );
 

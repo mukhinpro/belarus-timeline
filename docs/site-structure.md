@@ -32,6 +32,7 @@
 ├── /kids-model-portfolio-los-angeles/     Услуга: модельное портфолио
 │
 ├── /pricing/                              Цены
+├── /gift-certificates/                    Подарочные сертификаты
 ├── /about/                                О студии
 ├── /book/                                 Запись
 │
@@ -49,7 +50,7 @@
 
 ## 2. Меню
 
-**Главное:** Galleries · Families · Kids · Parties · Weddings · Pricing · About
+**Главное:** Galleries · Families · Kids · Parties · Weddings · Pricing · Gifts · About
 Кнопка «Check your date» добавляется темой сама.
 
 **Подвал:** About · Pricing · Journal · Book · Instagram · Privacy
@@ -70,9 +71,10 @@
 | 8 | Portrait Photography in Los Angeles | `portrait-photography-los-angeles` | Service page |
 | 9 | Kids Model Portfolio Photographer in Los Angeles | `kids-model-portfolio-los-angeles` | Service page |
 | 10 | Pricing | `pricing` | Pricing page |
-| 11 | About | `about` | по умолчанию |
-| 12 | Book a session | `book` | Booking page |
-| 13 | Journal | `journal` | по умолчанию, пустая → Настройки → Чтение |
+| 11 | Gift Certificates | `gift-certificates` | Gift certificate page |
+| 12 | About | `about` | по умолчанию |
+| 13 | Book a session | `book` | Booking page |
+| 14 | Journal | `journal` | по умолчанию, пустая → Настройки → Чтение |
 
 Галереи `/portfolio/` и `/sessions/...` создавать **не нужно** — они появляются сами, как только опубликуешь первую съёмку.
 
@@ -254,6 +256,30 @@ H1 и вступление уже в шаблоне. При желании по�
 
 ---
 
+### Подарочные сертификаты
+
+**Slug:** `gift-certificates` · **Шаблон:** Gift certificate page
+**Title:** Photography Gift Certificates in Los Angeles | ThereYare
+**Meta description:** Give a photo session as a gift — from $100, or a full family session. Sent as a PDF the same day. No expiry date.
+**H1:** Gift certificates
+**Отрывок:** Give someone an hour they'd never book for themselves — and photographs of it afterwards.
+
+Собирается паттерном **Gift certificate page (whole page)**: конструктор выбора, три шага, шесть вопросов.
+
+**Как это устроено технически**
+
+Оплата идёт через **Stripe Payment Links** — по одной ссылке на каждый вариант. Никакого магазина на сайте: WooCommerce грузил бы свои скрипты на каждой странице, а продаётся сертификатов несколько десятков в год.
+
+Ссылки вставляются в **Внешний вид → Настроить → Gift certificates**. Вариант без ссылки просто не показывается на странице — можно запуститься с двумя и добавлять остальные по мере готовности.
+
+**Важно при создании ссылок в Stripe.** В настройках каждой Payment Link включи сбор дополнительных полей: «Gift is for (recipient's name)» и «Gift is from». Именно это в примере на Wix так и не удалось сделать надёжно — там кнопку оплаты в боковой корзине нельзя было заблокировать. У Stripe поле помечается обязательным на стороне Stripe, и пропустить его нельзя.
+
+**Выдача сертификата.** В админке появился раздел **Certificates**. Создаёшь запись — код вида `TY-XXXX-XXXX` генерируется сам, повторов не бывает. Заполняешь, кому и от кого, жмёшь в списке «Print / save as PDF» и получаешь готовый макет в фирменных цветах, который печатается в PDF прямо из браузера.
+
+**Юридическое, важно для Калифорнии.** Civil Code §1749.5 запрещает продавать подарочный сертификат со сроком действия — писать «действует 12 месяцев» незаконно. Плюс с 1 апреля 2026 остаток меньше $15 обязаны вернуть наличными (закон SB22 поднял порог с $10). Поэтому на странице отсутствие срока подано как преимущество, а не замолчано.
+
+---
+
 ### Цены
 
 **Slug:** `pricing` · **Шаблон:** Pricing page
@@ -295,7 +321,7 @@ H1 и вступление уже в шаблоне. При желании по�
 
 ## 5. Порядок сборки
 
-1. Создать тринадцать страниц выше с точными slug'ами.
+1. Создать четырнадцать страниц выше с точными slug'ами.
 2. Назначить шаблоны (справа в редакторе, «Шаблон»).
 3. Вставить паттерны, заменить текст и фото.
 4. Опубликовать 3–5 съёмок в Portfolio — галереи появятся сами.
