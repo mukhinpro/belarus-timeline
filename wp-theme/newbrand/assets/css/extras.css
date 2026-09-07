@@ -1,0 +1,77 @@
+/*
+ * Everything theme.json cannot express. Deliberately short — the more that
+ * lives in theme.json, the more the block editor matches the front end.
+ */
+
+/* Breadcrumbs (theme block) */
+.nb-breadcrumbs a {
+	text-decoration: none;
+}
+.nb-breadcrumbs a:hover {
+	text-decoration: underline;
+}
+.nb-breadcrumbs span {
+	opacity: 0.5;
+}
+
+/*
+ * FAQ built from core Details blocks. Styled as a plain divider list so it
+ * reads as a document rather than a widget — and so it stays legible with
+ * JavaScript off, which is how crawlers see it.
+ */
+.wp-block-details.nb-faq-item {
+	border-bottom: 1px solid var(--wp--preset--color--hair);
+	padding: 0;
+}
+.wp-block-details.nb-faq-item:first-of-type {
+	border-top: 1px solid var(--wp--preset--color--hair);
+}
+.wp-block-details.nb-faq-item > summary {
+	list-style: none;
+	cursor: pointer;
+	position: relative;
+	padding: 22px 44px 22px 0;
+	font-family: var(--wp--preset--font-family--display);
+	font-weight: 600;
+	font-size: clamp(18px, 1.9vw, 22px);
+	line-height: 1.3;
+}
+.wp-block-details.nb-faq-item > summary::-webkit-details-marker {
+	display: none;
+}
+.wp-block-details.nb-faq-item > summary::after {
+	content: "+";
+	position: absolute;
+	right: 6px;
+	top: 50%;
+	transform: translateY(-50%);
+	font-family: var(--wp--preset--font-family--body);
+	font-weight: 700;
+	font-size: 24px;
+	color: var(--wp--preset--color--brick);
+}
+.wp-block-details.nb-faq-item[open] > summary::after {
+	content: "–";
+}
+.wp-block-details.nb-faq-item > :not(summary) {
+	color: var(--wp--preset--color--dim);
+	max-width: 62ch;
+	margin-bottom: 24px;
+}
+
+/* Give tiles a little lift without touching layout */
+.wp-block-image a:hover img {
+	transform: translateY(-4px);
+}
+.wp-block-image img {
+	transition: transform 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.wp-block-image img {
+		transition: none;
+	}
+	.wp-block-image a:hover img {
+		transform: none;
+	}
+}
