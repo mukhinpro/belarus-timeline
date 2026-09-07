@@ -3,7 +3,7 @@
  * Title: Service tiles
  * Slug: thereyare/service-tiles
  * Categories: thereyare-sections
- * Description: Four linked tiles, one per service page. The internal links that tie the site's hub to its spokes.
+ * Description: One linked tile per service page. These are the internal links that tie the home page to every service, which is how link value reaches them.
  * Keywords: services, tiles, links
  * Viewport Width: 1400
  */
@@ -21,10 +21,10 @@
 <div style="height:var(--wp--preset--spacing--40)" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 
-<!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|40","left":"var:preset|spacing|30"}}}} -->
-<div class="wp-block-columns alignwide"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:image {"aspectRatio":"3/4","scale":"cover","sizeSlug":"thereyare-tile","linkDestination":"custom","style":{"border":{"radius":"18px"}}} -->
-<figure class="wp-block-image size-thereyare-tile has-custom-border"><a href="/family-photography-los-angeles/"><img alt="Family photography session in Los Angeles" style="border-radius:18px;aspect-ratio:3/4;object-fit:cover"/></a></figure>
+<!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|40","left":"var:preset|spacing|30"}}},"layout":{"type":"grid","minimumColumnWidth":"220px"}} -->
+<div class="wp-block-group alignwide"><!-- wp:group {"layout":{"type":"constrained"},"style":{"spacing":{"blockGap":"0"}}} -->
+<div class="wp-block-group"><!-- wp:image {"aspectRatio":"3/4","scale":"cover","sizeSlug":"thereyare-tile","linkDestination":"custom","style":{"border":{"radius":"18px"}}} -->
+<figure class="wp-block-image size-thereyare-tile has-custom-border"><a href="/family-photography-los-angeles/"><img alt="Family photography session in Los Angeles"/></a></figure>
 <!-- /wp:image -->
 
 <!-- wp:heading {"level":3,"style":{"spacing":{"margin":{"top":"14px","bottom":"4px"}}}} -->
@@ -34,11 +34,11 @@
 <!-- wp:paragraph {"textColor":"dim","fontSize":"small"} -->
 <p class="has-dim-color has-text-color has-small-font-size">Studio, home or the city</p>
 <!-- /wp:paragraph --></div>
-<!-- /wp:column -->
+<!-- /wp:group -->
 
-<!-- wp:column -->
-<div class="wp-block-column"><!-- wp:image {"aspectRatio":"3/4","scale":"cover","sizeSlug":"thereyare-tile","linkDestination":"custom","style":{"border":{"radius":"18px"}}} -->
-<figure class="wp-block-image size-thereyare-tile has-custom-border"><a href="/kids-photographer-los-angeles/"><img alt="Children's portrait photography in Los Angeles" style="border-radius:18px;aspect-ratio:3/4;object-fit:cover"/></a></figure>
+<!-- wp:group {"layout":{"type":"constrained"},"style":{"spacing":{"blockGap":"0"}}} -->
+<div class="wp-block-group"><!-- wp:image {"aspectRatio":"3/4","scale":"cover","sizeSlug":"thereyare-tile","linkDestination":"custom","style":{"border":{"radius":"18px"}}} -->
+<figure class="wp-block-image size-thereyare-tile has-custom-border"><a href="/kids-photographer-los-angeles/"><img alt="Children's portrait photography in Los Angeles"/></a></figure>
 <!-- /wp:image -->
 
 <!-- wp:heading {"level":3,"style":{"spacing":{"margin":{"top":"14px","bottom":"4px"}}}} -->
@@ -48,11 +48,11 @@
 <!-- wp:paragraph {"textColor":"dim","fontSize":"small"} -->
 <p class="has-dim-color has-text-color has-small-font-size">Character portraits, not school photos</p>
 <!-- /wp:paragraph --></div>
-<!-- /wp:column -->
+<!-- /wp:group -->
 
-<!-- wp:column -->
-<div class="wp-block-column"><!-- wp:image {"aspectRatio":"3/4","scale":"cover","sizeSlug":"thereyare-tile","linkDestination":"custom","style":{"border":{"radius":"18px"}}} -->
-<figure class="wp-block-image size-thereyare-tile has-custom-border"><a href="/kids-party-photography-los-angeles/"><img alt="Children's birthday party photography in Los Angeles" style="border-radius:18px;aspect-ratio:3/4;object-fit:cover"/></a></figure>
+<!-- wp:group {"layout":{"type":"constrained"},"style":{"spacing":{"blockGap":"0"}}} -->
+<div class="wp-block-group"><!-- wp:image {"aspectRatio":"3/4","scale":"cover","sizeSlug":"thereyare-tile","linkDestination":"custom","style":{"border":{"radius":"18px"}}} -->
+<figure class="wp-block-image size-thereyare-tile has-custom-border"><a href="/kids-party-photography-los-angeles/"><img alt="Children's birthday party photography in Los Angeles"/></a></figure>
 <!-- /wp:image -->
 
 <!-- wp:heading {"level":3,"style":{"spacing":{"margin":{"top":"14px","bottom":"4px"}}}} -->
@@ -62,11 +62,11 @@
 <!-- wp:paragraph {"textColor":"dim","fontSize":"small"} -->
 <p class="has-dim-color has-text-color has-small-font-size">Start to cake to meltdown</p>
 <!-- /wp:paragraph --></div>
-<!-- /wp:column -->
+<!-- /wp:group -->
 
-<!-- wp:column -->
-<div class="wp-block-column"><!-- wp:image {"aspectRatio":"3/4","scale":"cover","sizeSlug":"thereyare-tile","linkDestination":"custom","style":{"border":{"radius":"18px"}}} -->
-<figure class="wp-block-image size-thereyare-tile has-custom-border"><a href="/wedding-photography-los-angeles/"><img alt="Wedding photography in Los Angeles" style="border-radius:18px;aspect-ratio:3/4;object-fit:cover"/></a></figure>
+<!-- wp:group {"layout":{"type":"constrained"},"style":{"spacing":{"blockGap":"0"}}} -->
+<div class="wp-block-group"><!-- wp:image {"aspectRatio":"3/4","scale":"cover","sizeSlug":"thereyare-tile","linkDestination":"custom","style":{"border":{"radius":"18px"}}} -->
+<figure class="wp-block-image size-thereyare-tile has-custom-border"><a href="/wedding-photography-los-angeles/"><img alt="Wedding photography in Los Angeles"/></a></figure>
 <!-- /wp:image -->
 
 <!-- wp:heading {"level":3,"style":{"spacing":{"margin":{"top":"14px","bottom":"4px"}}}} -->
@@ -76,6 +76,34 @@
 <!-- wp:paragraph {"textColor":"dim","fontSize":"small"} -->
 <p class="has-dim-color has-text-color has-small-font-size">Documentary with an editorial eye</p>
 <!-- /wp:paragraph --></div>
-<!-- /wp:column --></div>
-<!-- /wp:columns --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"layout":{"type":"constrained"},"style":{"spacing":{"blockGap":"0"}}} -->
+<div class="wp-block-group"><!-- wp:image {"aspectRatio":"3/4","scale":"cover","sizeSlug":"thereyare-tile","linkDestination":"custom","style":{"border":{"radius":"18px"}}} -->
+<figure class="wp-block-image size-thereyare-tile has-custom-border"><a href="/motherhood-photography-los-angeles/"><img alt="Motherhood and parent portrait photography in Los Angeles"/></a></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading {"level":3,"style":{"spacing":{"margin":{"top":"14px","bottom":"4px"}}}} -->
+<h3 class="wp-block-heading" style="margin-top:14px;margin-bottom:4px"><a href="/motherhood-photography-los-angeles/">Mothers &amp; fathers</a></h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"textColor":"dim","fontSize":"small"} -->
+<p class="has-dim-color has-text-color has-small-font-size">The parent, not just the parent-of</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"layout":{"type":"constrained"},"style":{"spacing":{"blockGap":"0"}}} -->
+<div class="wp-block-group"><!-- wp:image {"aspectRatio":"3/4","scale":"cover","sizeSlug":"thereyare-tile","linkDestination":"custom","style":{"border":{"radius":"18px"}}} -->
+<figure class="wp-block-image size-thereyare-tile has-custom-border"><a href="/kids-model-portfolio-los-angeles/"><img alt="Child model portfolio and agency comp card photography in Los Angeles"/></a></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading {"level":3,"style":{"spacing":{"margin":{"top":"14px","bottom":"4px"}}}} -->
+<h3 class="wp-block-heading" style="margin-top:14px;margin-bottom:4px"><a href="/kids-model-portfolio-los-angeles/">Model portfolios</a></h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"textColor":"dim","fontSize":"small"} -->
+<p class="has-dim-color has-text-color has-small-font-size">Agency tests and comp cards</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group --></section>
 <!-- /wp:group -->

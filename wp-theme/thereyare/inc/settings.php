@@ -18,9 +18,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 function thereyare_setting_fields(): array {
 	return [
 		'thereyare_studio_name' => [ 'Studio name', '', 'text' ],
+		'thereyare_photographer' => [ 'Lead photographer — full name', '', 'text' ],
 		'thereyare_phone'       => [ 'Phone', '', 'text' ],
 		'thereyare_email'       => [ 'Email', '', 'text' ],
 		'thereyare_instagram'   => [ 'Instagram URL', '', 'url' ],
+		'thereyare_street'      => [ 'Street address (office)', '', 'text' ],
+		'thereyare_postcode'    => [ 'Postal code', '', 'text' ],
 		'thereyare_city'        => [ 'Base city', 'Los Angeles', 'text' ],
 		'thereyare_region'      => [ 'State code', 'CA', 'text' ],
 		'thereyare_areas'       => [ 'Areas served (comma separated)', 'Los Angeles, Santa Monica, Malibu, Pasadena, Orange County', 'text' ],

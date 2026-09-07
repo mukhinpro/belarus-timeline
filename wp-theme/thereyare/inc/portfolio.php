@@ -91,6 +91,7 @@ add_action(
 			'Birthday parties'  => 'parties',
 			'Weddings'          => 'weddings',
 			'Motherhood'        => 'motherhood',
+			'Model portfolios'  => 'model-portfolios',
 		];
 
 		foreach ( $types as $name => $slug ) {

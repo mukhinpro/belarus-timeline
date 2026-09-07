@@ -17,6 +17,7 @@
 │   ├── /sessions/parties/                 Галерея: дни рождения
 │   ├── /sessions/weddings/                Галерея: свадьбы
 │   ├── /sessions/motherhood/              Галерея: родители
+│   ├── /sessions/model-portfolios/        Галерея: модельное портфолио
 │   └── /portfolio/<съёмка>/               Одна съёмка целиком
 │
 ├── /family-photography-los-angeles/       Услуга: семейная съёмка
@@ -24,6 +25,7 @@
 ├── /kids-party-photography-los-angeles/   Услуга: дни рождения
 ├── /wedding-photography-los-angeles/      Услуга: свадьбы
 ├── /motherhood-photography-los-angeles/   Услуга: портреты родителей
+├── /kids-model-portfolio-los-angeles/     Услуга: модельное портфолио
 │
 ├── /pricing/                              Цены
 ├── /about/                                О студии
@@ -35,7 +37,7 @@
 └── /locations/<место>/                    Страницы локаций (растут со временем)
 ```
 
-**Почему галереи разнесены по адресам, а не сделаны фильтром.** Фильтр на JavaScript Google не выполняет: он увидит одну страницу вместо пяти. Отдельные адреса дают пять страниц, каждая со своим заголовком и своим набором ключевых слов. Плюс на такую страницу можно дать ссылку в Instagram — «вот только свадьбы».
+**Почему галереи разнесены по адресам, а не сделаны фильтром.** Фильтр на JavaScript Google не выполняет: он увидит одну страницу вместо шести. Отдельные адреса дают шесть страниц, каждая со своим заголовком и своим набором ключевых слов. Плюс на такую страницу можно дать ссылку в Instagram — «вот только свадьбы».
 
 **Разница между галереей и страницей услуги.** Галерея отвечает на «покажи работы», услуга — на «сколько стоит и как проходит». Это разные намерения в поиске, поэтому и страницы разные, но они ссылаются друг на друга.
 
@@ -60,10 +62,11 @@
 | 4 | Kids' Party Photographer in Los Angeles | `kids-party-photography-los-angeles` | Service page |
 | 5 | Wedding Photography in Los Angeles | `wedding-photography-los-angeles` | Service page |
 | 6 | Motherhood & Parent Portraits in Los Angeles | `motherhood-photography-los-angeles` | Service page |
-| 7 | Pricing | `pricing` | Pricing page |
-| 8 | About | `about` | по умолчанию |
-| 9 | Book a session | `book` | Booking page |
-| 10 | Journal | `journal` | по умолчанию, пустая → Настройки → Чтение |
+| 7 | Kids Model Portfolio Photographer in Los Angeles | `kids-model-portfolio-los-angeles` | Service page |
+| 8 | Pricing | `pricing` | Pricing page |
+| 9 | About | `about` | по умолчанию |
+| 10 | Book a session | `book` | Booking page |
+| 11 | Journal | `journal` | по умолчанию, пустая → Настройки → Чтение |
 
 Галереи `/portfolio/` и `/sessions/...` создавать **не нужно** — они появляются сами, как только опубликуешь первую съёмку.
 
@@ -100,6 +103,8 @@ H1 и вступление уже в шаблоне. При желании по�
 **Parties.** Birthday parties photographed end to end: the room before the guests, the games, the cake, and the meltdown that everyone laughs about later.
 
 **Weddings.** Documentary coverage with an editorial eye. We shoot the day as it happens and step in only for the light.
+
+**Model portfolios.** Agency tests, digitals and comp-card crops for child and teen models, shot to the brief agencies actually give.
 
 **Mothers & fathers.** Portraits of the parent, not just the parent-of. Usually the photographs people are most nervous about and most grateful for.
 
@@ -187,6 +192,24 @@ H1 и вступление уже в шаблоне. При желании по�
 
 ---
 
+### Услуга: модельное портфолио детей
+
+**Slug:** `kids-model-portfolio-los-angeles`
+**Title:** Kids Model Portfolio Photographer in Los Angeles | ThereYare
+**Meta description:** Agency tests and comp cards for child and teen models in Los Angeles. Digitals, clean studio, usage rights in writing.
+**H1:** Child model portfolios and agency comp cards
+**Отрывок:** Agency tests, digitals and comp-card crops — shot to the brief agencies actually give.
+
+> Agencies ask for specific things and reject portfolios that don't have them: clean digitals with no makeup, a smiling shot, a serious one, full length, profile. Most family photographers don't shoot to that list, and the parent finds out after paying.
+>
+> We shoot to the list. Clean background, honest skin, no heavy retouching — agencies want to see the child, not an edit.
+>
+> Usage rights are written down in plain language before we start, so you know exactly what you can send where.
+
+**Почему эта страница ценна.** Запрос «kids model portfolio photographer Los Angeles» гораздо реже, чем «family photographer LA», но и конкуренция там в разы ниже, а чек выше. Такие страницы приносят первые заявки быстрее, чем главные.
+
+---
+
 ### Цены
 
 **Slug:** `pricing` · **Шаблон:** Pricing page
@@ -195,7 +218,7 @@ H1 и вступление уже в шаблоне. При желании по�
 **H1:** Pricing
 **Отрывок:** Clear prices, no hidden fees. Pick the kind of day, then the package that fits.
 
-Вставить паттерн **Packages** — пять раз, по одному на направление, каждый под своим H2. **Цены в паттерне сейчас взяты с потолка, замени на свои.**
+Вставить паттерн **Packages** — шесть раз, по одному на направление, каждый под своим H2. **Цены в паттерне сейчас взяты с потолка, замени на свои.**
 
 ---
 
@@ -228,7 +251,7 @@ H1 и вступление уже в шаблоне. При желании по�
 
 ## 5. Порядок сборки
 
-1. Создать десять страниц выше с точными slug'ами.
+1. Создать одиннадцать страниц выше с точными slug'ами.
 2. Назначить шаблоны (справа в редакторе, «Шаблон»).
 3. Вставить паттерны, заменить текст и фото.
 4. Опубликовать 3–5 съёмок в Portfolio — галереи появятся сами.
@@ -238,11 +261,28 @@ H1 и вступление уже в шаблоне. При желании по�
 
 ---
 
-## 6. Что нужно от тебя
+## 6. Адрес офиса — важная ловушка
 
-- Цены по пяти направлениям
+Ты арендуешь студии под съёмку, но у тебя есть адрес офиса. Здесь легко потерять карточку в Google, поэтому разведём две вещи, которые часто путают.
+
+**Разметка на сайте** и **карточка в Google Business Profile** — разные системы.
+
+*На сайте* адрес офиса указывать можно и полезно: он помогает Google понять, какому именно бизнесу принадлежит сайт. Поля уже добавлены в Настройки → Studio details.
+
+*В Google Business Profile* — нельзя. Правило Google: адрес показывают только те, кто принимает клиентов по этому адресу. Если клиенты в офис не приезжают, карточку нужно настроить как **service-area business** и адрес **скрыть**. Google спросит адрес при регистрации для проверки, но дальше его надо убрать из показа и выставить зоны обслуживания — районы LA.
+
+Указанный, но непосещаемый адрес — самая частая причина, по которой карточки блокируют. Восстановление занимает недели, и всё это время тебя нет в Картах.
+
+**Что делать:** при создании карточки на вопрос «Do you want to add a location customers can visit?» ответить **нет**, дальше указать зоны обслуживания.
+
+---
+
+## 7. Что нужно от тебя
+
+- Цены по шести направлениям
+- Твоё имя как фотографа — уходит в разметку Person, связывает работы с тобой лично
 - Телефон, email, Instagram
 - Районы обслуживания
 - Кто за камерой: один человек или команда
-- Фотографии: hero, 5 плиток галерей, 5 плиток услуг, 3–5 съёмок целиком
+- Фотографии: hero, 6 плиток галерей, 6 плиток услуг, 3–5 съёмок целиком
 - Реальные отзывы

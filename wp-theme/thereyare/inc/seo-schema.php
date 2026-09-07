@@ -26,6 +26,70 @@ function thereyare_seo_plugin_active(): bool {
 }
 
 /**
+ * The postal address, with the street included only when one is set.
+ *
+ * A note that matters more than the code: this is the website's structured
+ * data, which is a different system from the Google Business Profile listing.
+ * Putting the office address here helps Google work out which business the
+ * site belongs to. But if clients are never seen at that office, the Business
+ * Profile itself must be set up as a service-area business with the address
+ * hidden — listing an address customers cannot visit is the most common cause
+ * of a profile being suspended.
+ */
+function thereyare_address_node(): array {
+	$address = [
+		'@type'           => 'PostalAddress',
+		'addressLocality' => thereyare_setting( 'thereyare_city' ),
+		'addressRegion'   => thereyare_setting( 'thereyare_region' ),
+		'addressCountry'  => 'US',
+	];
+
+	$street = thereyare_setting( 'thereyare_street' );
+	if ( $street ) {
+		$address['streetAddress'] = $street;
+	}
+
+	$postcode = thereyare_setting( 'thereyare_postcode' );
+	if ( $postcode ) {
+		$address['postalCode'] = $postcode;
+	}
+
+	return $address;
+}
+
+/**
+ * The lead photographer as a Person, linked to the studio.
+ *
+ * Worth doing for a one-photographer studio: it gives Google a person to
+ * attach the work to, which is how a name starts appearing in its own right
+ * rather than only as a company. Returns null until a name is entered, because
+ * a Person node with no name is worse than no node at all.
+ */
+function thereyare_person_node(): ?array {
+	$name = thereyare_setting( 'thereyare_photographer' );
+
+	if ( ! $name ) {
+		return null;
+	}
+
+	$node = [
+		'@type'      => 'Person',
+		'@id'        => home_url( '/#photographer' ),
+		'name'       => $name,
+		'jobTitle'   => 'Photographer',
+		'worksFor'   => [ '@id' => home_url( '/#business' ) ],
+		'knowsAbout' => [ 'Family photography', 'Child portrait photography', 'Wedding photography' ],
+	];
+
+	$instagram = thereyare_setting( 'thereyare_instagram' );
+	if ( $instagram ) {
+		$node['sameAs'] = [ $instagram ];
+	}
+
+	return $node;
+}
+
+/**
  * The studio itself. Every other node points at this one by @id, which is what
  * lets Google tie the pages, the photographs and the business together.
  */
@@ -39,12 +103,7 @@ function thereyare_business_node(): array {
 		'description' => get_bloginfo( 'description' ),
 		'url'         => home_url( '/' ),
 		'priceRange'  => thereyare_setting( 'thereyare_price_range' ),
-		'address'     => [
-			'@type'           => 'PostalAddress',
-			'addressLocality' => thereyare_setting( 'thereyare_city' ),
-			'addressRegion'   => thereyare_setting( 'thereyare_region' ),
-			'addressCountry'  => 'US',
-		],
+		'address'     => thereyare_address_node(),
 		'areaServed'  => array_map(
 			static fn( $area ) => [ '@type' => 'City', 'name' => $area ],
 			$areas
@@ -60,6 +119,7 @@ function thereyare_business_node(): array {
 				'Kids birthday party photography',
 				'Wedding photography',
 				'Motherhood and parent portrait photography',
+				'Child model portfolio and agency comp card photography',
 			]
 		),
 	];
@@ -92,6 +152,12 @@ function thereyare_business_node(): array {
 			$node['logo']  = $logo;
 			$node['image'] = $logo;
 		}
+	}
+
+	// Point the business at the photographer when one is named.
+	if ( thereyare_setting( 'thereyare_photographer' ) ) {
+		$node['founder']  = [ '@id' => home_url( '/#photographer' ) ];
+		$node['employee'] = [ '@id' => home_url( '/#photographer' ) ];
 	}
 
 	return $node;
@@ -253,6 +319,11 @@ add_action(
 	'wp_head',
 	function () {
 		$graph = [ thereyare_business_node() ];
+
+		$person = thereyare_person_node();
+		if ( $person ) {
+			$graph[] = $person;
+		}
 
 		if ( is_front_page() ) {
 			$graph[] = [
