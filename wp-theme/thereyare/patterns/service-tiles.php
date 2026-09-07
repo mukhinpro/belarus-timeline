@@ -108,6 +108,20 @@
 
 <!-- wp:group {"layout":{"type":"constrained"},"style":{"spacing":{"blockGap":"0"}}} -->
 <div class="wp-block-group"><!-- wp:image {"aspectRatio":"3/4","scale":"cover","sizeSlug":"thereyare-tile","linkDestination":"custom","style":{"border":{"radius":"18px"}}} -->
+<figure class="wp-block-image size-thereyare-tile has-custom-border"><a href="/portrait-photography-los-angeles/"><img alt="Adult portrait photography in Los Angeles"/></a></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading {"level":3,"style":{"spacing":{"margin":{"top":"14px","bottom":"4px"}}}} -->
+<h3 class="wp-block-heading" style="margin-top:14px;margin-bottom:4px"><a href="/portrait-photography-los-angeles/">Portraits</a></h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"textColor":"dim","fontSize":"small"} -->
+<p class="has-dim-color has-text-color has-small-font-size">A picture of you, for you</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"layout":{"type":"constrained"},"style":{"spacing":{"blockGap":"0"}}} -->
+<div class="wp-block-group"><!-- wp:image {"aspectRatio":"3/4","scale":"cover","sizeSlug":"thereyare-tile","linkDestination":"custom","style":{"border":{"radius":"18px"}}} -->
 <figure class="wp-block-image size-thereyare-tile has-custom-border"><a href="/kids-model-portfolio-los-angeles/"><img alt="Child model portfolio and agency comp card photography in Los Angeles"/></a></figure>
 <!-- /wp:image -->
 

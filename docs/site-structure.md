@@ -18,6 +18,7 @@
 │   ├── /sessions/weddings/                Галерея: свадьбы
 │   ├── /sessions/maternity/               Галерея: беременность
 │   ├── /sessions/motherhood/              Галерея: родители
+│   ├── /sessions/portraits/               Галерея: портреты взрослых
 │   ├── /sessions/model-portfolios/        Галерея: модельное портфолио
 │   └── /portfolio/<съёмка>/               Одна съёмка целиком
 │
@@ -27,6 +28,7 @@
 ├── /wedding-photography-los-angeles/      Услуга: свадьбы
 ├── /maternity-photography-los-angeles/    Услуга: беременность
 ├── /motherhood-photography-los-angeles/   Услуга: портреты родителей
+├── /portrait-photography-los-angeles/     Услуга: портреты взрослых
 ├── /kids-model-portfolio-los-angeles/     Услуга: модельное портфолио
 │
 ├── /pricing/                              Цены
@@ -39,7 +41,7 @@
 └── /locations/<место>/                    Страницы локаций (растут со временем)
 ```
 
-**Почему галереи разнесены по адресам, а не сделаны фильтром.** Фильтр на JavaScript Google не выполняет: он увидит одну страницу вместо семи. Отдельные адреса дают семь страниц, каждая со своим заголовком и своим набором ключевых слов. Плюс на такую страницу можно дать ссылку в Instagram — «вот только свадьбы».
+**Почему галереи разнесены по адресам, а не сделаны фильтром.** Фильтр на JavaScript Google не выполняет: он увидит одну страницу вместо восьми. Отдельные адреса дают восемь страниц, каждая со своим заголовком и своим набором ключевых слов. Плюс на такую страницу можно дать ссылку в Instagram — «вот только свадьбы».
 
 **Разница между галереей и страницей услуги.** Галерея отвечает на «покажи работы», услуга — на «сколько стоит и как проходит». Это разные намерения в поиске, поэтому и страницы разные, но они ссылаются друг на друга.
 
@@ -65,11 +67,12 @@
 | 5 | Wedding Photography in Los Angeles | `wedding-photography-los-angeles` | Service page |
 | 6 | Maternity Photography in Los Angeles | `maternity-photography-los-angeles` | Service page |
 | 7 | Motherhood & Parent Portraits in Los Angeles | `motherhood-photography-los-angeles` | Service page |
-| 8 | Kids Model Portfolio Photographer in Los Angeles | `kids-model-portfolio-los-angeles` | Service page |
-| 9 | Pricing | `pricing` | Pricing page |
-| 10 | About | `about` | по умолчанию |
-| 11 | Book a session | `book` | Booking page |
-| 12 | Journal | `journal` | по умолчанию, пустая → Настройки → Чтение |
+| 8 | Portrait Photography in Los Angeles | `portrait-photography-los-angeles` | Service page |
+| 9 | Kids Model Portfolio Photographer in Los Angeles | `kids-model-portfolio-los-angeles` | Service page |
+| 10 | Pricing | `pricing` | Pricing page |
+| 11 | About | `about` | по умолчанию |
+| 12 | Book a session | `book` | Booking page |
+| 13 | Journal | `journal` | по умолчанию, пустая → Настройки → Чтение |
 
 Галереи `/portfolio/` и `/sessions/...` создавать **не нужно** — они появляются сами, как только опубликуешь первую съёмку.
 
@@ -108,6 +111,8 @@ H1 и вступление уже в шаблоне. При желании по�
 **Weddings.** Documentary coverage with an editorial eye. We shoot the day as it happens and step in only for the light.
 
 **Maternity.** The last weeks before everything changes, photographed while they are still happening. Partner and older children welcome.
+
+**Portraits.** Classic portraits of adults, made for the person in them. Not a fashion shoot, not a headshot, nothing to take off.
 
 **Model portfolios.** Agency tests, digitals and comp-card crops for child and teen models, shot to the brief agencies actually give.
 
@@ -213,6 +218,24 @@ H1 и вступление уже в шаблоне. При желании по�
 
 ---
 
+### Услуга: портреты взрослых
+
+**Slug:** `portrait-photography-los-angeles`
+**Title:** Portrait Photographer in Los Angeles | ThereYare
+**Meta description:** Classic portrait sessions for adults in Los Angeles — $700 for two hours. Not fashion, not headshots. A photograph of you, made for you.
+**H1:** Portrait photography in Los Angeles
+**Отрывок:** A proper photograph of you, made for you — not for a brief, a brand or an agency.
+
+> Most adults have no good photograph of themselves. Not a bad one — none at all. There are holiday snaps, a work headshot from four years ago, and a thousand frames where you're half turned away because you were the one holding the camera.
+>
+> This session fixes that. One person, two hours, proper light, and a photograph you'd actually hang up or give to your parents.
+>
+> It isn't a fashion shoot and it isn't boudoir. No styling brief to live up to, nothing to take off, no character to play. Just you, on a good day, lit properly.
+
+**Почему отдельная страница.** Запрос «portrait photographer Los Angeles» ищут взрослые для себя — это другой человек и другое намерение, чем «family photographer». Смешивать их на одной странице значит проиграть обе.
+
+---
+
 ### Услуга: модельное портфолио детей
 
 **Slug:** `kids-model-portfolio-los-angeles`
@@ -239,7 +262,7 @@ H1 и вступление уже в шаблоне. При желании по�
 **H1:** Pricing
 **Отрывок:** Clear prices, no hidden fees. Pick the kind of day, then the package that fits.
 
-Вставить паттерн **Pricing — all seven sessions**. Он содержит все семь карточек с твоими реальными ценами и блок общих условий (ассистент, свет, аренда студии, выезд).
+Вставить паттерн **Pricing — all eight sessions**. Он содержит все восемь карточек с твоими реальными ценами и блок общих условий (ассистент, свет, аренда студии, выезд).
 
 ---
 
@@ -272,7 +295,7 @@ H1 и вступление уже в шаблоне. При желании по�
 
 ## 5. Порядок сборки
 
-1. Создать двенадцать страниц выше с точными slug'ами.
+1. Создать тринадцать страниц выше с точными slug'ами.
 2. Назначить шаблоны (справа в редакторе, «Шаблон»).
 3. Вставить паттерны, заменить текст и фото.
 4. Опубликовать 3–5 съёмок в Portfolio — галереи появятся сами.
@@ -320,7 +343,7 @@ H1 и вступление уже в шаблоне. При желании по�
 
 **Блокирует запуск:**
 
-- **Фотографии** — hero, 7 плиток галерей, 7 плиток услуг, 3–5 съёмок целиком. Загружаешь через админку.
+- **Фотографии** — hero, 8 плиток галерей, 8 плиток услуг, 3–5 съёмок целиком. Загружаешь через админку.
 - **Домен** — `thereyare.com` занят. Проверить `thereyarestudio.com` (совпадает с ником в Instagram) и купить.
 
 **Не блокирует, добавим по ходу:**

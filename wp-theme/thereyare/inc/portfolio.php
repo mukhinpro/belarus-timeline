@@ -92,6 +92,7 @@ add_action(
 			'Weddings'          => 'weddings',
 			'Maternity'         => 'maternity',
 			'Motherhood'        => 'motherhood',
+			'Portraits'         => 'portraits',
 			'Model portfolios'  => 'model-portfolios',
 		];
 

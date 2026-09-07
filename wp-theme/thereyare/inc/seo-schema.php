@@ -120,6 +120,7 @@ function thereyare_business_node(): array {
 				'Wedding photography',
 				'Maternity photography',
 				'Motherhood and parent portrait photography',
+				'Portrait photography for adults',
 				'Child model portfolio and agency comp card photography',
 			]
 		),
