@@ -1,0 +1,22 @@
+/*
+ * Editor-only styling, so what the photographer sees while writing matches the
+ * published page. The dark ground matters here: light-on-dark copy written
+ * against a white canvas is always the wrong weight.
+ */
+
+.editor-styles-wrapper {
+	background-color: #0B0B0D;
+	color: #F3F0EB;
+}
+
+.editor-styles-wrapper .md-eyebrow {
+	color: #B04A22;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+}
+
+.editor-styles-wrapper .wp-block-details summary {
+	font-family: 'Cormorant Garamond', Georgia, serif;
+	font-size: 1.25rem;
+	font-weight: 300;
+}

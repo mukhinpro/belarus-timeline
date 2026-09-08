@@ -1,0 +1,304 @@
+/*
+ * Everything theme.json cannot express. Deliberately short — the more that
+ * lives in theme.json, the more the block editor matches the front end.
+ */
+
+/* Breadcrumbs (theme block) */
+.tya-breadcrumbs a {
+	text-decoration: none;
+}
+.tya-breadcrumbs a:hover {
+	text-decoration: underline;
+}
+.tya-breadcrumbs span {
+	opacity: 0.5;
+}
+
+/*
+ * FAQ built from core Details blocks. Styled as a plain divider list so it
+ * reads as a document rather than a widget — and so it stays legible with
+ * JavaScript off, which is how crawlers see it.
+ */
+.wp-block-details.tya-faq-item {
+	border-bottom: 1px solid var(--wp--preset--color--hair);
+	padding: 0;
+}
+.wp-block-details.tya-faq-item:first-of-type {
+	border-top: 1px solid var(--wp--preset--color--hair);
+}
+.wp-block-details.tya-faq-item > summary {
+	list-style: none;
+	cursor: pointer;
+	position: relative;
+	padding: 22px 44px 22px 0;
+	font-family: var(--wp--preset--font-family--display);
+	font-weight: 600;
+	font-size: clamp(18px, 1.9vw, 22px);
+	line-height: 1.3;
+}
+.wp-block-details.tya-faq-item > summary::-webkit-details-marker {
+	display: none;
+}
+.wp-block-details.tya-faq-item > summary::after {
+	content: "+";
+	position: absolute;
+	right: 6px;
+	top: 50%;
+	transform: translateY(-50%);
+	font-family: var(--wp--preset--font-family--body);
+	font-weight: 700;
+	font-size: 24px;
+	color: var(--wp--preset--color--brick);
+}
+.wp-block-details.tya-faq-item[open] > summary::after {
+	content: "–";
+}
+.wp-block-details.tya-faq-item > :not(summary) {
+	color: var(--wp--preset--color--dim);
+	max-width: 62ch;
+	margin-bottom: 24px;
+}
+
+/* Give tiles a little lift without touching layout */
+.wp-block-image a:hover img {
+	transform: translateY(-4px);
+}
+.wp-block-image img {
+	transition: transform 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.wp-block-image img {
+		transition: none;
+	}
+	.wp-block-image a:hover img {
+		transform: none;
+	}
+}
+
+/* ---------------------------------------------------------------
+   Gift certificate chooser
+   Cards are links first and a picker second, so they must read as
+   tappable before any script runs.
+------------------------------------------------------------------ */
+.tya-gift__heading {
+	margin-top: var(--wp--preset--spacing--60);
+	margin-bottom: 6px;
+	font-size: clamp(1.5rem, 2.4vw, 2rem);
+}
+.tya-gift__lede {
+	color: var(--wp--preset--color--dim);
+	max-width: 54ch;
+	margin-bottom: var(--wp--preset--spacing--40);
+}
+.tya-gift__setup {
+	background: var(--wp--preset--color--blush);
+	border-left: 3px solid var(--wp--preset--color--brick);
+	padding: 16px 20px;
+	border-radius: 0 12px 12px 0;
+	max-width: 62ch;
+}
+
+.tya-gift__grid {
+	display: grid;
+	gap: 16px;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.tya-gift__grid--amounts {
+	grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+.tya-gift__card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	height: 100%;
+	padding: 22px 24px;
+	border: 1.5px solid var(--wp--preset--color--hair);
+	border-radius: 22px;
+	background: var(--wp--preset--color--ivory);
+	text-decoration: none;
+	color: var(--wp--preset--color--graphite);
+	transition: border-color .16s ease, transform .16s ease;
+}
+.tya-gift__card:hover {
+	border-color: var(--wp--preset--color--brick);
+	transform: translateY(-2px);
+}
+.tya-gift__card.is-chosen {
+	border-color: var(--wp--preset--color--brick);
+	background: var(--wp--preset--color--blush);
+}
+
+.tya-gift__title {
+	font-family: var(--wp--preset--font-family--display);
+	font-weight: 600;
+	font-size: 1.125rem;
+	line-height: 1.2;
+}
+.tya-gift__price {
+	font-family: var(--wp--preset--font-family--display);
+	font-weight: 700;
+	font-size: 1.75rem;
+	line-height: 1.1;
+	color: var(--wp--preset--color--brick);
+	font-variant-numeric: tabular-nums;
+}
+.tya-gift__meta {
+	font-size: .8125rem;
+	color: var(--wp--preset--color--dim);
+	line-height: 1.5;
+}
+
+/* Tick shown only on the chosen card. */
+.tya-gift__mark {
+	position: absolute;
+	top: 16px;
+	right: 18px;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: var(--wp--preset--color--brick);
+	opacity: 0;
+	transition: opacity .16s ease;
+}
+.tya-gift__mark::after {
+	content: "";
+	position: absolute;
+	left: 6px;
+	top: 4px;
+	width: 5px;
+	height: 10px;
+	border: solid var(--wp--preset--color--ivory);
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
+}
+.tya-gift__card.is-chosen .tya-gift__mark {
+	opacity: 1;
+}
+
+/* Confirm bar. Sticks to the bottom on a phone, where the grid is long. */
+.tya-gift__bar {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 18px;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: var(--wp--preset--spacing--50);
+	padding: 20px 24px;
+	background: var(--wp--preset--color--sand);
+	border-radius: 22px;
+}
+.tya-gift__chosen {
+	margin: 0;
+	color: var(--wp--preset--color--dim);
+}
+.tya-gift__chosen strong {
+	color: var(--wp--preset--color--graphite);
+}
+.tya-gift__chosen-label {
+	font-size: .6875rem;
+	font-weight: 700;
+	letter-spacing: .14em;
+	text-transform: uppercase;
+	color: var(--wp--preset--color--brick);
+}
+
+@media (max-width: 780px) {
+	.tya-gift__bar {
+		position: sticky;
+		bottom: 12px;
+		box-shadow: 0 8px 28px rgba(26, 22, 20, .16);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.tya-gift__card,
+	.tya-gift__card:hover,
+	.tya-gift__mark {
+		transition: none;
+		transform: none;
+	}
+}
+
+/* --- Booking calendar --------------------------------------------------
+   The scheduler frame is the heaviest thing on the booking page, so it is
+   lazy and it sits below the copy. Until a link is set it renders as the
+   phone and email instead of an empty box.                              */
+
+.tya-calendar { margin-top: var(--wp--preset--spacing--50); }
+
+.tya-calendar__frame {
+	display: block;
+	width: 100%;
+	min-height: 720px;
+	border: 1px solid var(--wp--preset--color--hair);
+	border-radius: var(--wp--custom--radius, 18px);
+	background: var(--wp--preset--color--ivory);
+}
+
+.tya-calendar--fallback {
+	padding: clamp(28px, 5vw, 48px);
+	border: 1px solid var(--wp--preset--color--hair);
+	border-radius: var(--wp--custom--radius, 18px);
+	background: var(--wp--preset--color--ivory);
+	text-align: center;
+}
+
+.tya-calendar__lead {
+	margin: 0 0 22px;
+	font-family: var(--wp--preset--font-family--display);
+	font-size: clamp(1.375rem, 3.5vw, 1.875rem);
+	font-weight: 600;
+	line-height: 1.2;
+}
+
+.tya-calendar__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	justify-content: center;
+	margin: 0;
+}
+
+.tya-calendar__note {
+	margin: 16px 0 0;
+	color: var(--wp--preset--color--dim);
+	font-size: 0.8125rem;
+	text-align: center;
+}
+
+.tya-btn {
+	display: inline-block;
+	padding: 14px 28px;
+	border: 1px solid var(--wp--preset--color--brick);
+	border-radius: 999px;
+	background: var(--wp--preset--color--brick);
+	color: var(--wp--preset--color--ivory);
+	font-weight: 700;
+	font-size: 0.9375rem;
+	text-decoration: none;
+	transition: background .2s ease, color .2s ease;
+}
+
+.tya-btn:hover,
+.tya-btn:focus-visible {
+	background: var(--wp--preset--color--graphite);
+	border-color: var(--wp--preset--color--graphite);
+	color: var(--wp--preset--color--ivory);
+	text-decoration: none;
+}
+
+.tya-btn--quiet {
+	background: transparent;
+	color: var(--wp--preset--color--graphite);
+	border-color: var(--wp--preset--color--hair);
+}
+
+.tya-btn--quiet:hover,
+.tya-btn--quiet:focus-visible {
+	background: transparent;
+	border-color: var(--wp--preset--color--brick);
+	color: var(--wp--preset--color--brick);
+}

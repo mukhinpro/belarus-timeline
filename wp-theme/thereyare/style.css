@@ -1,0 +1,20 @@
+/*
+Theme Name: ThereYare
+Theme URI: https://thereyarestudio.com
+Author: ThereYare
+Author URI: https://thereyarestudio.com
+Description: Block theme for ThereYare, a kids, family and wedding photography studio in Los Angeles. Full Site Editing, core blocks only, JSON-LD schema generated from the blocks on the page, tuned for local SEO and Core Web Vitals.
+Version: 1.0.0
+Requires at least: 6.7
+Tested up to: 6.8
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: thereyare
+Tags: block-patterns, full-site-editing, photography, portfolio, one-column, wide-blocks
+*/
+
+/*
+ * Nearly all styling lives in theme.json so the block editor and the front end
+ * stay in sync. This file carries only what theme.json cannot express.
+ */

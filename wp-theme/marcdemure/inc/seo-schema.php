@@ -1,0 +1,661 @@
+<?php
+/**
+ * Structured data.
+ *
+ * The schema is derived from the blocks actually on the page rather than typed
+ * into a settings screen, so it cannot drift away from what a visitor reads —
+ * which is the failure Google penalises.
+ *
+ * Two deliberate omissions. There is no AggregateRating: marking up your own
+ * star rating on your own site is against Google's guidelines and earns a
+ * manual action. And nothing in the member area is described at all, because
+ * describing gated content to a crawler is how it ends up in search.
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Walk a parsed block tree, including nested blocks.
+ *
+ * @param array<int, array<string, mixed>> $blocks
+ */
+function md_walk_blocks( array $blocks, callable $visit ): void {
+	foreach ( $blocks as $block ) {
+		if ( ! is_array( $block ) ) {
+			continue;
+		}
+
+		$visit( $block );
+
+		if ( ! empty( $block['innerBlocks'] ) && is_array( $block['innerBlocks'] ) ) {
+			md_walk_blocks( $block['innerBlocks'], $visit );
+		}
+	}
+}
+
+/**
+ * Build FAQPage entries from the Details blocks on the page.
+ *
+ * Every question in the markup becomes a question in the schema, and nothing
+ * else does. Write a new FAQ in the editor and the structured data follows.
+ *
+ * @return array<int, array<string, mixed>>
+ */
+function md_faq_from_blocks( string $content ): array {
+	if ( ! has_blocks( $content ) ) {
+		return [];
+	}
+
+	$faq = [];
+
+	md_walk_blocks(
+		parse_blocks( $content ),
+		static function ( array $block ) use ( &$faq ): void {
+			if ( 'core/details' !== ( $block['blockName'] ?? '' ) ) {
+				return;
+			}
+
+			$question = (string) ( $block['attrs']['summary'] ?? '' );
+
+			if ( '' === $question && preg_match( '#<summary[^>]*>(.*?)</summary>#is', (string) ( $block['innerHTML'] ?? '' ), $m ) ) {
+				$question = $m[1];
+			}
+
+			$answer = '';
+
+			foreach ( (array) ( $block['innerBlocks'] ?? [] ) as $inner ) {
+				$answer .= render_block( $inner );
+			}
+
+			$question = trim( wp_strip_all_tags( $question ) );
+			$answer   = trim( wp_strip_all_tags( $answer ) );
+
+			if ( '' !== $question && '' !== $answer ) {
+				$faq[] = [
+					'@type'          => 'Question',
+					'name'           => $question,
+					'acceptedAnswer' => [ '@type' => 'Answer', 'text' => $answer ],
+				];
+			}
+		}
+	);
+
+	return $faq;
+}
+
+/**
+ * The studio itself.
+ *
+ * A service-area business: the photographer travels, and clients do not visit
+ * an address. Publishing one they cannot visit is the single most common cause
+ * of a Google Business Profile suspension.
+ *
+ * @return array<string, mixed>
+ */
+function md_business_node(): array {
+	$name  = md_setting( 'md_photographer' );
+	$city  = md_setting( 'md_city' );
+	$areas = array_filter( array_map( 'trim', explode( ',', md_setting( 'md_areas' ) ) ) );
+
+	$node = [
+		'@type'       => [ 'LocalBusiness', 'ProfessionalService' ],
+		'@id'         => home_url( '/#studio' ),
+		'name'        => $name,
+		'url'         => home_url( '/' ),
+		'description' => get_bloginfo( 'description' ),
+		'priceRange'  => '$$',
+		'areaServed'  => array_map(
+			static fn( string $area ): array => [ '@type' => 'City', 'name' => $area ],
+			$areas
+		),
+		'address'     => [
+			'@type'           => 'PostalAddress',
+			'addressLocality' => $city,
+			'addressRegion'   => md_setting( 'md_region' ),
+			'addressCountry'  => 'US',
+		],
+	];
+
+	$phone = md_setting( 'md_phone' );
+	if ( '' !== $phone ) {
+		$node['telephone'] = $phone;
+	}
+
+	$email = md_setting( 'md_email' );
+	if ( '' !== $email ) {
+		$node['email'] = $email;
+	}
+
+	$instagram = md_setting( 'md_instagram' );
+	if ( '' !== $instagram ) {
+		$node['sameAs'] = [ $instagram ];
+	}
+
+	$founded = md_setting( 'md_founded' );
+	if ( '' !== $founded ) {
+		$node['foundingDate'] = $founded;
+	}
+
+	$from = md_setting( 'md_price_from' );
+
+	$node['makesOffer'] = array_map(
+		static function ( array $offer ) use ( $from ): array {
+			return [
+				'@type'         => 'Offer',
+				'name'          => $offer['name'],
+				'priceCurrency' => 'USD',
+				'price'         => $offer['price'] ?: $from,
+				'itemOffered'   => [
+					'@type'       => 'Service',
+					'name'        => $offer['name'],
+					'serviceType' => $offer['type'],
+				],
+			];
+		},
+		md_service_offers()
+	);
+
+	return $node;
+}
+
+/**
+ * The services, in one place, so the pricing page and the schema agree.
+ *
+ * @return array<int, array{name: string, type: string, price: string}>
+ */
+function md_service_offers(): array {
+	return [
+		[ 'name' => 'Boudoir session', 'type' => 'Boudoir photography', 'price' => '650' ],
+		[ 'name' => 'Men\'s portrait session', 'type' => 'Boudoir photography', 'price' => '650' ],
+		[ 'name' => 'Couples session', 'type' => 'Boudoir photography', 'price' => '900' ],
+	];
+}
+
+/**
+ * The photographer, when a name has been set.
+ *
+ * @return array<string, mixed>|null
+ */
+function md_person_node(): ?array {
+	$name = md_setting( 'md_photographer' );
+
+	if ( '' === $name ) {
+		return null;
+	}
+
+	$node = [
+		'@type'      => 'Person',
+		'@id'        => home_url( '/#photographer' ),
+		'name'       => $name,
+		'jobTitle'   => 'Photographer',
+		'worksFor'   => [ '@id' => home_url( '/#studio' ) ],
+		'knowsAbout' => [ 'Boudoir photography', 'Portrait photography', 'Studio lighting' ],
+	];
+
+	$instagram = md_setting( 'md_instagram' );
+
+	if ( '' !== $instagram ) {
+		$node['sameAs'] = [ $instagram ];
+	}
+
+	return $node;
+}
+
+/**
+ * The crumb trail, built from the same logic the visible breadcrumbs use.
+ *
+ * @return array<string, mixed>|null
+ */
+function md_breadcrumb_node(): ?array {
+	$trail = md_breadcrumb_trail();
+
+	if ( count( $trail ) < 2 ) {
+		return null;
+	}
+
+	$items = [];
+	$position = 1;
+
+	foreach ( $trail as $crumb ) {
+		$items[] = [
+			'@type'    => 'ListItem',
+			'position' => $position ++,
+			'name'     => $crumb['label'],
+			'item'     => $crumb['url'],
+		];
+	}
+
+	return [
+		'@type'           => 'BreadcrumbList',
+		'@id'             => md_current_url() . '#breadcrumbs',
+		'itemListElement' => $items,
+	];
+}
+
+/**
+ * @return array<int, array{label: string, url: string}>
+ */
+function md_breadcrumb_trail(): array {
+	$trail = [ [ 'label' => __( 'Home', 'marcdemure' ), 'url' => home_url( '/' ) ] ];
+
+	if ( is_tax( 'shoot_type' ) ) {
+		$term = get_queried_object();
+		$trail[] = [ 'label' => __( 'Portfolio', 'marcdemure' ), 'url' => (string) get_post_type_archive_link( 'shoot' ) ];
+
+		if ( $term instanceof WP_Term ) {
+			$trail[] = [ 'label' => $term->name, 'url' => (string) get_term_link( $term ) ];
+		}
+
+		return $trail;
+	}
+
+	if ( is_post_type_archive( 'shoot' ) ) {
+		$trail[] = [ 'label' => __( 'Portfolio', 'marcdemure' ), 'url' => (string) get_post_type_archive_link( 'shoot' ) ];
+		return $trail;
+	}
+
+	if ( is_singular( 'shoot' ) ) {
+		$trail[] = [ 'label' => __( 'Portfolio', 'marcdemure' ), 'url' => (string) get_post_type_archive_link( 'shoot' ) ];
+
+		$terms = get_the_terms( get_queried_object_id(), 'shoot_type' );
+
+		if ( is_array( $terms ) && $terms ) {
+			$trail[] = [ 'label' => $terms[0]->name, 'url' => (string) get_term_link( $terms[0] ) ];
+		}
+
+		$trail[] = [ 'label' => get_the_title(), 'url' => (string) get_permalink() ];
+		return $trail;
+	}
+
+	if ( is_page() ) {
+		foreach ( array_reverse( get_post_ancestors( get_queried_object_id() ) ) as $ancestor ) {
+			$trail[] = [ 'label' => (string) get_the_title( $ancestor ), 'url' => (string) get_permalink( $ancestor ) ];
+		}
+
+		$trail[] = [ 'label' => get_the_title(), 'url' => (string) get_permalink() ];
+	}
+
+	/**
+	 * @param array<int, array{label: string, url: string}> $trail
+	 */
+	return apply_filters( 'md_breadcrumb_trail', $trail );
+}
+
+function md_current_url(): string {
+	$url = home_url( add_query_arg( [], $GLOBALS['wp']->request ?? '' ) );
+	return user_trailingslashit( $url );
+}
+
+/**
+ * Emit the graph.
+ */
+add_action(
+	'wp_head',
+	function () {
+		// Nothing in the member area is ever described to a crawler.
+		if ( is_singular( 'private_set' ) || is_post_type_archive( 'private_set' ) || is_404() ) {
+			return;
+		}
+
+		$graph = [
+			[
+				'@type'      => 'WebSite',
+				'@id'        => home_url( '/#website' ),
+				'url'        => home_url( '/' ),
+				'name'       => get_bloginfo( 'name' ),
+				'publisher'  => [ '@id' => home_url( '/#studio' ) ],
+				'inLanguage' => get_bloginfo( 'language' ),
+			],
+			md_business_node(),
+		];
+
+		$person = md_person_node();
+
+		if ( $person ) {
+			$graph[] = $person;
+		}
+
+		$crumbs = md_breadcrumb_node();
+
+		if ( $crumbs ) {
+			$graph[] = $crumbs;
+		}
+
+		if ( is_singular() ) {
+			$faq = md_faq_from_blocks( (string) get_post_field( 'post_content', get_queried_object_id() ) );
+
+			if ( $faq ) {
+				$graph[] = [
+					'@type'      => 'FAQPage',
+					'@id'        => md_current_url() . '#faq',
+					'mainEntity' => $faq,
+				];
+			}
+		}
+
+		if ( is_singular( 'shoot' ) ) {
+			$graph[] = [
+				'@type'       => 'ImageGallery',
+				'@id'         => md_current_url() . '#gallery',
+				'name'        => get_the_title(),
+				'description' => get_the_excerpt(),
+				'url'         => (string) get_permalink(),
+				'author'      => [ '@id' => home_url( '/#photographer' ) ],
+			];
+		}
+
+		/**
+		 * Lets other parts of the theme add nodes for the page they know about.
+		 *
+		 * @param array<int, array<string, mixed>> $graph
+		 */
+		$graph = apply_filters( 'md_schema_graph', $graph );
+
+		printf(
+			'<script type="application/ld+json">%s</script>' . "\n",
+			wp_json_encode(
+				[ '@context' => 'https://schema.org', '@graph' => $graph ],
+				JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
+			)
+		);
+	},
+	5
+);
+
+/**
+ * Canonical and Open Graph, but only when no SEO plugin is doing it.
+ * Two canonical tags are worse than none.
+ */
+add_action(
+	'wp_head',
+	function () {
+		if ( defined( 'RANK_MATH_VERSION' ) || defined( 'WPSEO_VERSION' ) || defined( 'SEOPRESS_VERSION' ) ) {
+			return;
+		}
+
+		if ( is_singular( 'private_set' ) || is_post_type_archive( 'private_set' ) ) {
+			return;
+		}
+
+		$url   = md_current_url();
+		$title = wp_get_document_title();
+
+		printf( '<link rel="canonical" href="%s">' . "\n", esc_url( $url ) );
+		printf( '<meta property="og:type" content="%s">' . "\n", is_singular() ? 'article' : 'website' );
+		printf( '<meta property="og:title" content="%s">' . "\n", esc_attr( $title ) );
+		printf( '<meta property="og:url" content="%s">' . "\n", esc_url( $url ) );
+		printf( '<meta property="og:site_name" content="%s">' . "\n", esc_attr( get_bloginfo( 'name' ) ) );
+		printf( '<meta name="twitter:card" content="summary_large_image">' . "\n" );
+
+		$image = is_singular() && has_post_thumbnail()
+			? get_the_post_thumbnail_url( get_queried_object_id(), 'md-sheet' )
+			: get_site_icon_url( 512 );
+
+		if ( $image ) {
+			printf( '<meta property="og:image" content="%s">' . "\n", esc_url( $image ) );
+		}
+	},
+	6
+);
+
+/**
+ * Which service does a page describe? Read from the slug, so the schema
+ * follows the URL the photographer chose without a settings screen.
+ *
+ * @return array{name: string, type: string, price: string}|null
+ */
+function md_service_for_page(): ?array {
+	if ( ! is_page() || 'page-service' !== get_page_template_slug( get_queried_object_id() ) ) {
+		return null;
+	}
+
+	$slug   = (string) get_post_field( 'post_name', get_queried_object_id() );
+	$offers = md_service_offers();
+
+	if ( str_contains( $slug, 'couple' ) ) {
+		return $offers[2];
+	}
+
+	if ( str_contains( $slug, 'men' ) && ! str_contains( $slug, 'women' ) ) {
+		return $offers[1];
+	}
+
+	// Bridal and plain women's boudoir are the same service at the same price.
+	return $offers[0];
+}
+
+/**
+ * A Service node on each service page, tied to the studio and priced.
+ */
+add_filter(
+	'md_schema_graph',
+	function ( array $graph ): array {
+		$service = md_service_for_page();
+
+		if ( ! $service ) {
+			return $graph;
+		}
+
+		$graph[] = [
+			'@type'       => 'Service',
+			'@id'         => md_current_url() . '#service',
+			'name'        => get_the_title(),
+			'serviceType' => $service['type'],
+			'provider'    => [ '@id' => home_url( '/#studio' ) ],
+			'areaServed'  => [ '@type' => 'City', 'name' => md_setting( 'md_city' ) ],
+			'url'         => md_current_url(),
+			'offers'      => [
+				'@type'         => 'Offer',
+				'priceCurrency' => 'USD',
+				'price'         => $service['price'],
+				'url'           => home_url( '/pricing/' ),
+			],
+		];
+
+		return $graph;
+	}
+);
+
+/**
+ * A meta description when no SEO plugin supplies one.
+ *
+ * The excerpt if the photographer wrote one; otherwise the first real
+ * paragraph of the page, cut at a word boundary. Archives use the term or
+ * post-type description. Never the site tagline repeated on every page —
+ * that is what Google ignores.
+ */
+function md_meta_description(): string {
+	$text = '';
+
+	if ( is_singular() ) {
+		$post = get_queried_object();
+
+		if ( $post instanceof WP_Post ) {
+			$text = has_excerpt( $post ) ? get_the_excerpt( $post ) : md_first_paragraph( (string) $post->post_content );
+		}
+	} elseif ( is_tax() || is_category() || is_tag() ) {
+		$text = term_description();
+	} elseif ( is_post_type_archive( 'shoot' ) ) {
+		$text = 'Boudoir photography portfolio, Los Angeles: women, men and couples, each published with written permission.';
+	} elseif ( is_front_page() ) {
+		$text = get_bloginfo( 'description' );
+	}
+
+	$text = trim( preg_replace( '/\s+/', ' ', wp_strip_all_tags( (string) $text ) ) );
+
+	if ( mb_strlen( $text ) > 158 ) {
+		$text = mb_substr( $text, 0, 158 );
+		$text = mb_substr( $text, 0, (int) mb_strrpos( $text, ' ' ) ) . '…';
+	}
+
+	return $text;
+}
+
+function md_first_paragraph( string $content ): string {
+	if ( ! has_blocks( $content ) ) {
+		return $content;
+	}
+
+	$found = '';
+
+	md_walk_blocks(
+		parse_blocks( $content ),
+		static function ( array $block ) use ( &$found ): void {
+			if ( '' !== $found || 'core/paragraph' !== ( $block['blockName'] ?? '' ) ) {
+				return;
+			}
+			$text = trim( wp_strip_all_tags( (string) ( $block['innerHTML'] ?? '' ) ) );
+			if ( mb_strlen( $text ) > 40 ) {
+				$found = $text;
+			}
+		}
+	);
+
+	return $found;
+}
+
+add_action(
+	'wp_head',
+	function () {
+		if ( defined( 'RANK_MATH_VERSION' ) || defined( 'WPSEO_VERSION' ) || defined( 'SEOPRESS_VERSION' ) ) {
+			return;
+		}
+
+		if ( is_singular( 'private_set' ) || is_post_type_archive( 'private_set' ) || is_search() || is_404() ) {
+			return;
+		}
+
+		$description = md_meta_description();
+
+		if ( '' !== $description ) {
+			printf( '<meta name="description" content="%s">' . "\n", esc_attr( $description ) );
+			printf( '<meta property="og:description" content="%s">' . "\n", esc_attr( $description ) );
+		}
+	},
+	4
+);
+
+/**
+ * Search result pages are duplicates of everything else and should not rank.
+ */
+add_action(
+	'wp_head',
+	function () {
+		if ( is_search() ) {
+			echo '<meta name="robots" content="noindex, follow">' . "\n";
+		}
+	},
+	1
+);
+
+/**
+ * robots.txt: point at the sitemap, and keep crawlers away from the member
+ * area and the file endpoint. Belt and braces — both already send noindex.
+ */
+add_filter(
+	'robots_txt',
+	function ( string $output ): string {
+		$lines = [
+			'Disallow: /private/',
+			'Disallow: /*?md_file=',
+			'Disallow: /wp-content/uploads/md-private/',
+			'',
+			'Sitemap: ' . home_url( '/wp-sitemap.xml' ),
+		];
+
+		return rtrim( $output ) . "\n" . implode( "\n", $lines ) . "\n";
+	}
+);
+
+/**
+ * BlogPosting on journal entries, authored by the photographer, so the
+ * articles carry the same E-E-A-T signal as the rest of the site.
+ */
+add_filter(
+	'md_schema_graph',
+	function ( array $graph ): array {
+		if ( ! is_singular( 'post' ) ) {
+			return $graph;
+		}
+
+		$post = get_queried_object();
+
+		if ( ! $post instanceof WP_Post ) {
+			return $graph;
+		}
+
+		$node = [
+			'@type'            => 'BlogPosting',
+			'@id'              => md_current_url() . '#article',
+			'headline'         => get_the_title( $post ),
+			'description'      => md_meta_description(),
+			'url'              => md_current_url(),
+			'datePublished'    => get_the_date( 'c', $post ),
+			'dateModified'     => get_the_modified_date( 'c', $post ),
+			'author'           => [ '@id' => home_url( '/#photographer' ) ],
+			'publisher'        => [ '@id' => home_url( '/#studio' ) ],
+			'mainEntityOfPage' => md_current_url(),
+			'inLanguage'       => get_bloginfo( 'language' ),
+		];
+
+		if ( has_post_thumbnail( $post ) ) {
+			$node['image'] = get_the_post_thumbnail_url( $post, 'md-full' );
+		}
+
+		$graph[] = $node;
+
+		return $graph;
+	}
+);
+
+/**
+ * A Place on each studio page — the local-SEO node. The address comes from
+ * the page's own excerpt, one line, so the photographer never edits code.
+ */
+add_filter(
+	'md_schema_graph',
+	function ( array $graph ): array {
+		if ( ! is_page() || 'page-location' !== get_page_template_slug( get_queried_object_id() ) ) {
+			return $graph;
+		}
+
+		$graph[] = [
+			'@type'          => 'Place',
+			'@id'            => md_current_url() . '#place',
+			'name'           => get_the_title(),
+			'url'            => md_current_url(),
+			'address'        => [
+				'@type'           => 'PostalAddress',
+				'streetAddress'   => trim( wp_strip_all_tags( get_the_excerpt() ) ),
+				'addressLocality' => md_setting( 'md_city' ),
+				'addressRegion'   => md_setting( 'md_region' ),
+				'addressCountry'  => 'US',
+			],
+			'containedInPlace' => [ '@type' => 'City', 'name' => md_setting( 'md_city' ) ],
+		];
+
+		return $graph;
+	}
+);
+
+/**
+ * Journal breadcrumbs.
+ */
+add_filter(
+	'md_breadcrumb_trail',
+	function ( array $trail ): array {
+		if ( ! is_singular( 'post' ) ) {
+			return $trail;
+		}
+
+		$journal = get_option( 'page_for_posts' ) ? (string) get_permalink( (int) get_option( 'page_for_posts' ) ) : home_url( '/journal/' );
+
+		return [
+			[ 'label' => __( 'Home', 'marcdemure' ), 'url' => home_url( '/' ) ],
+			[ 'label' => __( 'Journal', 'marcdemure' ), 'url' => $journal ],
+			[ 'label' => get_the_title(), 'url' => (string) get_permalink() ],
+		];
+	}
+);

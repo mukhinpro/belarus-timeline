@@ -1,0 +1,35 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","style":{"spacing":{"margin":{"top":"var:preset|spacing|50"}}},"layout":{"type":"constrained"}} -->
+<main class="wp-block-group" style="margin-top:var(--wp--preset--spacing--50)"><!-- wp:marcdemure/breadcrumbs /-->
+
+<!-- wp:post-title {"level":1,"style":{"spacing":{"margin":{"top":"var:preset|spacing|30"}}},"fontSize":"xx-large"} /-->
+
+<!-- wp:group {"style":{"spacing":{"margin":{"top":"var:preset|spacing|20"}}},"layout":{"type":"flex","flexWrap":"wrap"}} -->
+<div class="wp-block-group" style="margin-top:var(--wp--preset--spacing--20)"><!-- wp:post-date {"textColor":"ash","fontSize":"small"} /-->
+
+<!-- wp:post-author-name {"textColor":"ash","fontSize":"small"} /--></div>
+<!-- /wp:group -->
+
+<!-- wp:post-featured-image {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|50"}}}} /-->
+
+<!-- wp:post-content {"layout":{"type":"constrained"}} /-->
+
+<!-- wp:separator {"className":"md-rule","style":{"spacing":{"margin":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|40"}}},"backgroundColor":"line"} -->
+<hr class="wp-block-separator has-text-color has-line-color has-alpha-channel-opacity has-line-background-color has-background md-rule" style="margin-top:var(--wp--preset--spacing--60);margin-bottom:var(--wp--preset--spacing--40)"/>
+<!-- /wp:separator -->
+
+<!-- wp:heading {"level":2,"fontSize":"x-large"} -->
+<h2 class="wp-block-heading has-x-large-font-size">More from the journal</h2>
+<!-- /wp:heading -->
+
+<!-- wp:query {"queryId":3,"query":{"perPage":3,"pages":1,"offset":0,"postType":"post","order":"desc","orderBy":"date","inherit":false},"align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|40"}}}} -->
+<div class="wp-block-query alignwide" style="margin-top:var(--wp--preset--spacing--40)"><!-- wp:post-template {"style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"grid","minimumColumnWidth":"260px"}} -->
+<!-- wp:post-title {"isLink":true,"level":3,"fontSize":"medium"} /-->
+<!-- /wp:post-template --></div>
+<!-- /wp:query -->
+
+<!-- wp:pattern {"slug":"marcdemure/booking-cta"} /--></main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

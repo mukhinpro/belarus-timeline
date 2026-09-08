@@ -1,0 +1,527 @@
+/*
+ * Only what theme.json cannot express: the age notice, the access panel, and
+ * a few portfolio details.
+ */
+
+/* --- Age notice ------------------------------------------------------- */
+
+.md-age {
+	position: fixed;
+	inset: 0;
+	z-index: 9999;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 24px;
+	background: rgba(6, 6, 8, 0.94);
+	backdrop-filter: blur(6px);
+}
+
+.md-age__card {
+	max-width: 460px;
+	padding: clamp(28px, 6vw, 48px);
+	border: 1px solid var(--wp--preset--color--line);
+	background: var(--wp--preset--color--coal);
+	text-align: center;
+}
+
+.md-age__title {
+	margin: 0 0 14px;
+	font-family: var(--wp--preset--font-family--display);
+	font-size: clamp(1.75rem, 5vw, 2.25rem);
+	font-weight: 300;
+	line-height: 1.15;
+}
+
+.md-age__body {
+	margin: 0 0 26px;
+	color: var(--wp--preset--color--ash);
+	font-size: 0.9375rem;
+	line-height: 1.6;
+}
+
+.md-age__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	justify-content: center;
+	margin: 0;
+}
+
+/* --- Buttons outside the block editor ---------------------------------- */
+
+.md-btn {
+	display: inline-block;
+	padding: 15px 32px;
+	border: 1px solid var(--wp--preset--color--terracotta);
+	background: var(--wp--preset--color--terracotta);
+	color: var(--wp--preset--color--pearl);
+	font-family: var(--wp--preset--font-family--body);
+	font-size: 0.8125rem;
+	font-weight: 500;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	text-decoration: none;
+	cursor: pointer;
+	transition: background 0.2s ease, color 0.2s ease;
+}
+
+.md-btn:hover,
+.md-btn:focus-visible {
+	background: var(--wp--preset--color--pearl);
+	border-color: var(--wp--preset--color--pearl);
+	color: var(--wp--preset--color--ink);
+	text-decoration: none;
+}
+
+.md-btn--quiet {
+	background: transparent;
+	border-color: var(--wp--preset--color--line);
+	color: var(--wp--preset--color--pearl);
+}
+
+.md-btn--quiet:hover,
+.md-btn--quiet:focus-visible {
+	background: transparent;
+	border-color: var(--wp--preset--color--terracotta);
+	color: var(--wp--preset--color--terracotta);
+}
+
+/* --- Access panel ------------------------------------------------------ */
+
+.md-panel {
+	padding: clamp(28px, 5vw, 48px);
+	border: 1px solid var(--wp--preset--color--line);
+	background: var(--wp--preset--color--coal);
+	text-align: center;
+}
+
+.md-panel__flash {
+	margin: 0 0 18px;
+	padding-bottom: 18px;
+	border-bottom: 1px solid var(--wp--preset--color--line);
+	color: var(--wp--preset--color--terracotta);
+	font-size: 0.9375rem;
+}
+
+.md-panel__lead {
+	margin: 0 0 22px;
+	font-family: var(--wp--preset--font-family--display);
+	font-size: clamp(1.375rem, 3.5vw, 1.875rem);
+	font-weight: 300;
+	line-height: 1.3;
+}
+
+.md-panel__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	justify-content: center;
+	margin: 0;
+}
+
+.md-panel__note {
+	margin: 20px 0 0;
+	color: var(--wp--preset--color--ash);
+	font-size: 0.8125rem;
+	letter-spacing: 0.02em;
+}
+
+/* --- The two grounds --------------------------------------------------
+   Lime plaster, both halves, from two real tiles in assets/img: broad soft
+   clouds of tone, a few diagonal trowel sweeps, rare hairline scratches.
+   Colour is baked into each tile, so nothing here blends or overlays — the
+   wall is simply the background, and a button is a small piece of it.    */
+
+:root {
+	--md-terracotta-wall: url("../img/plaster-terracotta.jpg");
+	--md-black-wall: url("../img/plaster-black.jpg");
+}
+
+.md-seam {
+	height: 1px;
+	border: 0;
+	margin: 0;
+	background: var(--wp--preset--color--seam);
+	opacity: 0.9;
+}
+
+/* Every terracotta surface is the wall itself. */
+.has-terracotta-background-color,
+.md-btn,
+.wp-element-button {
+	background-color: var(--wp--preset--color--terracotta);
+	background-image: var(--md-terracotta-wall);
+	background-size: 900px 900px;
+	background-attachment: scroll;
+}
+
+/* The darker corner from the reference, laid over the tile per section so
+   it never repeats with the tile. */
+.has-terracotta-background-color {
+	background-image:
+		radial-gradient(70% 55% at 90% 100%, rgba(60, 18, 4, 0.45), transparent 66%),
+		radial-gradient(60% 50% at 8% 4%, rgba(255, 170, 110, 0.10), transparent 60%),
+		var(--md-terracotta-wall);
+}
+
+.md-btn--quiet,
+.is-style-outline .wp-element-button {
+	background-image: none;
+	background-color: transparent;
+}
+
+/* The black plaster, faint, on the surfaces that frame the page. */
+.wp-site-blocks > header,
+.wp-site-blocks > footer,
+.has-coal-background-color {
+	background-image: var(--md-black-wall);
+	background-size: 900px 900px;
+}
+
+.has-terracotta-background-color .has-ash-color,
+.has-terracotta-background-color .md-panel__note {
+	color: #F3DDCB;
+}
+
+.has-terracotta-background-color .md-eyebrow,
+.has-terracotta-background-color .wp-block-details summary::after {
+	color: var(--wp--preset--color--seam);
+}
+
+.has-terracotta-background-color .md-panel {
+	border-color: rgba(239, 230, 214, 0.25);
+	background: rgba(12, 11, 10, 0.30);
+	background-image: none;
+}
+
+.has-terracotta-background-color .md-btn,
+.has-terracotta-background-color .wp-element-button {
+	background: var(--wp--preset--color--pearl);
+	border-color: var(--wp--preset--color--pearl);
+	color: var(--wp--preset--color--ink);
+}
+
+.has-terracotta-background-color .md-btn:hover,
+.has-terracotta-background-color .md-btn:focus-visible {
+	background: var(--wp--preset--color--ink);
+	border-color: var(--wp--preset--color--ink);
+	color: var(--wp--preset--color--pearl);
+}
+
+.has-terracotta-background-color .md-btn--quiet {
+	background: transparent;
+	border-color: rgba(239, 230, 214, 0.5);
+	color: var(--wp--preset--color--pearl);
+}
+
+/* --- Portfolio -------------------------------------------------------- */
+
+.md-eyebrow {
+	color: var(--wp--preset--color--terracotta);
+	font-size: 0.75rem;
+	font-weight: 500;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+}
+
+.md-card__frame img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	aspect-ratio: 3 / 4;
+	transition: transform 0.6s ease, opacity 0.4s ease;
+}
+
+.md-card:hover .md-card__frame img {
+	transform: scale(1.03);
+	opacity: 0.88;
+}
+
+/* Restrained by choice: the photographs carry the page, so the furniture
+   around them stays quiet. */
+.md-rule {
+	height: 1px;
+	border: 0;
+	background: var(--wp--preset--color--line);
+}
+
+/* --- Breadcrumbs ------------------------------------------------------ */
+
+.md-crumbs {
+	color: var(--wp--preset--color--ash);
+	font-size: 0.8125rem;
+	letter-spacing: 0.04em;
+}
+
+.md-crumbs a {
+	color: var(--wp--preset--color--ash);
+	text-decoration: none;
+}
+
+.md-crumbs a:hover {
+	color: var(--wp--preset--color--terracotta);
+}
+
+.md-crumbs__sep {
+	margin: 0 8px;
+	opacity: 0.5;
+}
+
+/* --- Details blocks used as FAQ --------------------------------------- */
+
+.wp-block-details {
+	border-bottom: 1px solid var(--wp--preset--color--line);
+}
+
+.wp-block-details summary {
+	cursor: pointer;
+	font-family: var(--wp--preset--font-family--display);
+	font-size: 1.25rem;
+	font-weight: 300;
+	list-style: none;
+}
+
+.wp-block-details summary::-webkit-details-marker {
+	display: none;
+}
+
+.wp-block-details summary::after {
+	content: "+";
+	float: right;
+	color: var(--wp--preset--color--terracotta);
+}
+
+.wp-block-details[open] summary::after {
+	content: "\2212";
+}
+
+/* --- Focus ------------------------------------------------------------ */
+
+:where(a, button, summary, input, textarea):focus-visible {
+	outline: 2px solid var(--wp--preset--color--terracotta);
+	outline-offset: 3px;
+}
+
+/* --- Booking calendar ------------------------------------------------- */
+
+.md-calendar {
+	margin-top: var(--wp--preset--spacing--50);
+}
+
+.md-calendar__frame {
+	display: block;
+	width: 100%;
+	min-height: 720px;
+	border: 1px solid var(--wp--preset--color--line);
+	background: var(--wp--preset--color--coal);
+}
+
+.md-calendar--fallback {
+	padding: clamp(28px, 5vw, 48px);
+	border: 1px solid var(--wp--preset--color--line);
+	background: var(--wp--preset--color--coal);
+	text-align: center;
+}
+
+.md-calendar__lead {
+	margin: 0 0 22px;
+	font-family: var(--wp--preset--font-family--display);
+	font-size: clamp(1.375rem, 3.5vw, 1.875rem);
+	font-weight: 300;
+}
+
+.md-calendar__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	justify-content: center;
+	margin: 0;
+}
+
+.md-calendar__note {
+	margin: 16px 0 0;
+	color: var(--wp--preset--color--ash);
+	font-size: 0.8125rem;
+	text-align: center;
+}
+
+/* --- Testimonials ----------------------------------------------------- */
+
+.md-quote {
+	padding: var(--wp--preset--spacing--40) 0;
+	border-top: 1px solid var(--wp--preset--color--line);
+}
+
+.md-quote p:first-child {
+	font-family: var(--wp--preset--font-family--display);
+	font-size: clamp(1.25rem, 2.4vw, 1.625rem);
+	font-weight: 300;
+	line-height: 1.35;
+}
+
+.md-quote cite {
+	display: block;
+	margin-top: 12px;
+	color: var(--wp--preset--color--ash);
+	font-size: 0.8125rem;
+	font-style: normal;
+	letter-spacing: 0.06em;
+}
+
+/* --- Gift chooser (ported) ------------------------------------------- */
+
+/* ---------------------------------------------------------------
+   Gift certificate chooser
+   Cards are links first and a picker second, so they must read as
+   tappable before any script runs.
+------------------------------------------------------------------ */
+.md-gift__heading {
+	margin-top: var(--wp--preset--spacing--60);
+	margin-bottom: 6px;
+	font-size: clamp(1.5rem, 2.4vw, 2rem);
+}
+
+.md-gift__lede {
+	color: var(--wp--preset--color--ash);
+	max-width: 54ch;
+	margin-bottom: var(--wp--preset--spacing--40);
+}
+
+.md-gift__setup {
+	background: var(--wp--preset--color--smoke);
+	border-left: 3px solid var(--wp--preset--color--terracotta);
+	padding: 16px 20px;
+	border-radius: 2px;
+	max-width: 62ch;
+}
+
+.md-gift__grid {
+	display: grid;
+	gap: 16px;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.md-gift__grid--amounts {
+	grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+.md-gift__card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	height: 100%;
+	padding: 22px 24px;
+	border: 1.5px solid var(--wp--preset--color--line);
+	border-radius: 2px;
+	background: var(--wp--preset--color--ink);
+	text-decoration: none;
+	color: var(--wp--preset--color--pearl);
+	transition: border-color .16s ease, transform .16s ease;
+}
+
+.md-gift__card:hover {
+	border-color: var(--wp--preset--color--terracotta);
+	transform: translateY(-2px);
+}
+
+.md-gift__card.is-chosen {
+	border-color: var(--wp--preset--color--terracotta);
+	background: var(--wp--preset--color--smoke);
+}
+
+.md-gift__title {
+	font-family: var(--wp--preset--font-family--display);
+	font-weight: 600;
+	font-size: 1.125rem;
+	line-height: 1.2;
+}
+
+.md-gift__price {
+	font-family: var(--wp--preset--font-family--display);
+	font-weight: 700;
+	font-size: 1.75rem;
+	line-height: 1.1;
+	color: var(--wp--preset--color--terracotta);
+	font-variant-numeric: tabular-nums;
+}
+
+.md-gift__meta {
+	font-size: .8125rem;
+	color: var(--wp--preset--color--ash);
+	line-height: 1.5;
+}
+
+/* Tick shown only on the chosen card. */
+.md-gift__mark {
+	position: absolute;
+	top: 16px;
+	right: 18px;
+	width: 20px;
+	height: 20px;
+	border-radius: 2px;
+	background: var(--wp--preset--color--terracotta);
+	opacity: 0;
+	transition: opacity .16s ease;
+}
+
+.md-gift__mark::after {
+	content: "";
+	position: absolute;
+	left: 6px;
+	top: 4px;
+	width: 5px;
+	height: 10px;
+	border: solid var(--wp--preset--color--ink);
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
+}
+
+.md-gift__card.is-chosen .md-gift__mark {
+	opacity: 1;
+}
+
+/* Confirm bar. Sticks to the bottom on a phone, where the grid is long. */
+.md-gift__bar {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 18px;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: var(--wp--preset--spacing--50);
+	padding: 20px 24px;
+	background: var(--wp--preset--color--coal);
+	border-radius: 2px;
+}
+
+.md-gift__chosen {
+	margin: 0;
+	color: var(--wp--preset--color--ash);
+}
+
+.md-gift__chosen strong {
+	color: var(--wp--preset--color--pearl);
+}
+
+.md-gift__chosen-label {
+	font-size: .6875rem;
+	font-weight: 700;
+	letter-spacing: .14em;
+	text-transform: uppercase;
+	color: var(--wp--preset--color--terracotta);
+}
+
+.md-gift__bar {
+		position: sticky;
+		bottom: 12px;
+		box-shadow: 0 8px 28px rgba(26, 22, 20, .16);
+	}
+
+.md-gift__card,
+	.md-gift__card:hover,
+	.md-gift__mark {
+		transition: none;
+		transform: none;
+	}

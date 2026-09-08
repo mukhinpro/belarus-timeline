@@ -1,0 +1,16 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "thereyare/booking-calendar",
+	"title": "Booking calendar",
+	"category": "theme",
+	"icon": "calendar-alt",
+	"description": "Embeds the scheduling calendar set in Customizer → Studio details. Shows a plain contact fallback until a link is set.",
+	"textdomain": "thereyare",
+	"supports": { "html": false, "align": [ "wide" ] },
+	"attributes": {
+		"align": { "type": "string", "default": "wide" }
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}
