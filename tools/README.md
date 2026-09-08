@@ -39,11 +39,8 @@ Page bodies are pulled from the theme's registered block patterns, so a page
 created by the script and one built by hand in the editor come out identical.
 There is one source of truth for the words, and it is the pattern file.
 
-Pages with no pattern are created empty:
-
-- **ThereYare** — eight service pages. Their copy is in
-  `docs/site-structure.md`, section 4.
-- **Both** — About and the legal pages, which nobody can write for you.
+Pages with no pattern are created empty. That is now only **About** and the
+legal pages, on both sites — the ones nobody can write for you.
 
 ## The journal
 

@@ -123,6 +123,17 @@ and to the service pages: `what-to-wear-to-a-family-photo-session`,
 
 Each post carries BlogPosting structured data authored by the photographer.
 
+### All nine services ship their copy
+
+Every service page is now a whole-page pattern under **Studio: whole pages** —
+family, kids and teens, parties, weddings, maternity, newborns, parent
+portraits, adult portraits and model portfolios. Each carries the page copy,
+a "what you get" list with the real price, and four to six questions that
+become FAQPage structured data on their own.
+
+`tools/setup-thereyare.php` inserts all nine automatically, so the only pages
+left to write by hand are About and the legal ones.
+
 ### New pages
 
 | Title | Slug | Template | Insert pattern |
