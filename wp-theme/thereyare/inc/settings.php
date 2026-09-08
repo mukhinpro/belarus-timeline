@@ -29,6 +29,8 @@ function thereyare_setting_fields(): array {
 		'thereyare_areas'       => [ 'Areas served (comma separated)', 'Los Angeles, Santa Monica, Malibu, Pasadena, Orange County', 'text' ],
 		'thereyare_price_range' => [ 'Price range (for Google)', '$$', 'text' ],
 		'thereyare_price_from'  => [ 'Lowest session price, digits only', '360', 'text' ],
+		'thereyare_booking_url'    => [ 'default' => '', 'label' => 'Scheduling link (Calendly or Acuity)' ],
+		'thereyare_google_reviews' => [ 'default' => '', 'label' => 'Google reviews link' ],
 		'thereyare_founded'     => [ 'Year founded', '', 'text' ],
 	];
 }

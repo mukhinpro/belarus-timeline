@@ -1,0 +1,45 @@
+<!-- wp:template-part {"slug":"header","tagName":"div","area":"header"} /-->
+
+<!-- wp:group {"tagName":"main","style":{"spacing":{"margin":{"top":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<main class="wp-block-group" style="margin-top:var(--wp--preset--spacing--60)"><!-- wp:paragraph {"style":{"typography":{"fontStyle":"normal","fontWeight":"700","letterSpacing":"0.2em","textTransform":"uppercase"}},"textColor":"brick","fontSize":"small"} -->
+<p class="has-brick-color has-text-color has-small-font-size">Journal</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":1,"style":{"spacing":{"margin":{"top":"12px"}}}} -->
+<h1 class="wp-block-heading" style="margin-top:12px">Everything we get asked before a session.</h1>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"var:preset|spacing|30"}}},"textColor":"dim","fontSize":"large"} -->
+<p class="has-dim-color has-text-color has-large-font-size" style="margin-top:var(--wp--preset--spacing--30)">What to wear, where to shoot in Los Angeles, how to get a toddler through an hour with a camera, and what actually happens on the day. Written for parents, not for photographers.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:query {"queryId":0,"query":{"perPage":10,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","inherit":true},"align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|60"}}},"layout":{"type":"default"}} -->
+<div class="wp-block-query alignwide" style="margin-top:var(--wp--preset--spacing--60)"><!-- wp:post-template {"style":{"spacing":{"blockGap":"var:preset|spacing|50"}},"layout":{"type":"grid","minimumColumnWidth":"320px"}} -->
+<!-- wp:group {"className":"tya-card","style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group tya-card"><!-- wp:post-featured-image {"isLink":true,"aspectRatio":"4/3","style":{"border":{"radius":"14px"}}} /-->
+
+<!-- wp:post-date {"textColor":"dim","fontSize":"small","style":{"typography":{"fontStyle":"normal","fontWeight":"700","letterSpacing":"0.14em","textTransform":"uppercase"}}} /-->
+
+<!-- wp:post-title {"isLink":true,"level":2,"fontSize":"large"} /-->
+
+<!-- wp:post-excerpt {"excerptLength":26,"textColor":"dim","fontSize":"small"} /--></div>
+<!-- /wp:group -->
+<!-- /wp:post-template -->
+
+<!-- wp:query-pagination {"style":{"spacing":{"margin":{"top":"var:preset|spacing|60"}}},"layout":{"type":"flex","justifyContent":"space-between"}} -->
+<!-- wp:query-pagination-previous /-->
+<!-- wp:query-pagination-numbers /-->
+<!-- wp:query-pagination-next /-->
+<!-- /wp:query-pagination -->
+
+<!-- wp:query-no-results -->
+<!-- wp:paragraph {"textColor":"dim"} -->
+<p class="has-dim-color has-text-color">The first note goes up shortly.</p>
+<!-- /wp:paragraph -->
+<!-- /wp:query-no-results --></div>
+<!-- /wp:query -->
+
+<!-- wp:pattern {"slug":"thereyare/booking-cta"} /--></main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"div","area":"footer"} /-->

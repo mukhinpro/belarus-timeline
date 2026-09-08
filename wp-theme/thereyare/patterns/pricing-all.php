@@ -152,6 +152,34 @@
 
 <!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40","right":"var:preset|spacing|40"},"blockGap":"12px"},"border":{"radius":"24px","width":"1.5px","color":"#E3DAD2"}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group has-border-color" style="border-color:#E3DAD2;border-width:1.5px;border-radius:24px;padding:var(--wp--preset--spacing--40)"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading"><a href="/newborn-photography-los-angeles/">Newborns</a></h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"style":{"typography":{"fontStyle":"normal","fontWeight":"700"}},"textColor":"brick","fontSize":"xx-large","fontFamily":"display"} -->
+<p class="has-brick-color has-text-color has-display-font-family has-xx-large-font-size" style="font-style:normal;font-weight:700">$700</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"textColor":"dim","fontSize":"small"} -->
+<p class="has-dim-color has-text-color has-small-font-size">Two hours</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li>12 photographs retouched in full</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Around 50 more, colour-graded</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Partner and older children welcome</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40","right":"var:preset|spacing|40"},"blockGap":"12px"},"border":{"radius":"24px","width":"1.5px","color":"#E3DAD2"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-border-color" style="border-color:#E3DAD2;border-width:1.5px;border-radius:24px;padding:var(--wp--preset--spacing--40)"><!-- wp:heading {"level":3} -->
 <h3 class="wp-block-heading"><a href="/motherhood-photography-los-angeles/">Parent portraits</a></h3>
 <!-- /wp:heading -->
 

@@ -221,3 +221,84 @@
 		transform: none;
 	}
 }
+
+/* --- Booking calendar --------------------------------------------------
+   The scheduler frame is the heaviest thing on the booking page, so it is
+   lazy and it sits below the copy. Until a link is set it renders as the
+   phone and email instead of an empty box.                              */
+
+.tya-calendar { margin-top: var(--wp--preset--spacing--50); }
+
+.tya-calendar__frame {
+	display: block;
+	width: 100%;
+	min-height: 720px;
+	border: 1px solid var(--wp--preset--color--hair);
+	border-radius: var(--wp--custom--radius, 18px);
+	background: var(--wp--preset--color--ivory);
+}
+
+.tya-calendar--fallback {
+	padding: clamp(28px, 5vw, 48px);
+	border: 1px solid var(--wp--preset--color--hair);
+	border-radius: var(--wp--custom--radius, 18px);
+	background: var(--wp--preset--color--ivory);
+	text-align: center;
+}
+
+.tya-calendar__lead {
+	margin: 0 0 22px;
+	font-family: var(--wp--preset--font-family--display);
+	font-size: clamp(1.375rem, 3.5vw, 1.875rem);
+	font-weight: 600;
+	line-height: 1.2;
+}
+
+.tya-calendar__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	justify-content: center;
+	margin: 0;
+}
+
+.tya-calendar__note {
+	margin: 16px 0 0;
+	color: var(--wp--preset--color--dim);
+	font-size: 0.8125rem;
+	text-align: center;
+}
+
+.tya-btn {
+	display: inline-block;
+	padding: 14px 28px;
+	border: 1px solid var(--wp--preset--color--brick);
+	border-radius: 999px;
+	background: var(--wp--preset--color--brick);
+	color: var(--wp--preset--color--ivory);
+	font-weight: 700;
+	font-size: 0.9375rem;
+	text-decoration: none;
+	transition: background .2s ease, color .2s ease;
+}
+
+.tya-btn:hover,
+.tya-btn:focus-visible {
+	background: var(--wp--preset--color--graphite);
+	border-color: var(--wp--preset--color--graphite);
+	color: var(--wp--preset--color--ivory);
+	text-decoration: none;
+}
+
+.tya-btn--quiet {
+	background: transparent;
+	color: var(--wp--preset--color--graphite);
+	border-color: var(--wp--preset--color--hair);
+}
+
+.tya-btn--quiet:hover,
+.tya-btn--quiet:focus-visible {
+	background: transparent;
+	border-color: var(--wp--preset--color--brick);
+	color: var(--wp--preset--color--brick);
+}

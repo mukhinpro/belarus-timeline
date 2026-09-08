@@ -91,6 +91,7 @@ add_action(
 			'Birthday parties'  => 'parties',
 			'Weddings'          => 'weddings',
 			'Maternity'         => 'maternity',
+			'Newborns'          => 'newborns',
 			'Motherhood'        => 'motherhood',
 			'Portraits'         => 'portraits',
 			'Model portfolios'  => 'model-portfolios',

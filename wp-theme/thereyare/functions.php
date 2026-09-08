@@ -85,6 +85,7 @@ add_action(
 	function () {
 		register_block_type( get_template_directory() . '/blocks/breadcrumbs' );
 		register_block_type( get_template_directory() . '/blocks/gift-chooser' );
+		register_block_type( get_template_directory() . '/blocks/booking-calendar' );
 	}
 );
 

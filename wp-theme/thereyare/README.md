@@ -99,3 +99,63 @@ find . -type f \( -name '*.php' -o -name '*.json' -o -name '*.html' -o -name '*.
 ## 9. Ограничение этой сборки
 
 Тема написана и проверена статически: синтаксис PHP, валидность JSON, целостность 432 блочных делимитеров во всех шаблонах и паттернах. **Живой рендер в WordPress не проверялся** — в среде разработки не было доступа к wordpress.org. Первый запуск на хостинге нужно пройти по чеклисту выше.
+
+
+## Added in the second pass
+
+### The journal
+
+`templates/home.html` is the journal index; set **Settings → Reading → Posts
+page** to a page called Journal (slug `journal`). Four articles ship as
+patterns under **Studio: whole pages**:
+
+- What to wear to a family photo session
+- How to get a toddler through a photo session
+- Where to shoot family photos in Los Angeles
+- How to get your child into a modelling agency in LA
+
+For each: **Posts → Add New**, type the title, insert the pattern, set a
+featured image, publish. Keep these slugs — the articles link to each other
+and to the service pages: `what-to-wear-to-a-family-photo-session`,
+`how-to-get-a-toddler-through-a-photo-session`,
+`where-to-shoot-family-photos-in-los-angeles`,
+`how-to-get-your-child-into-a-modelling-agency-in-la`.
+
+Each post carries BlogPosting structured data authored by the photographer.
+
+### New pages
+
+| Title | Slug | Template | Insert pattern |
+|---|---|---|---|
+| Newborn Photography in Los Angeles | `newborn-photography-los-angeles` | Service page | Service page: newborn photography |
+| Before Your Session | `prepare-for-your-session` | default | Before your session |
+| Mini Sessions | `mini-sessions` | default | Mini sessions |
+| Albums and Prints | `albums` | default | Albums and prints |
+| Journal | `journal` | default, empty | — then Settings → Reading |
+| El Matador Beach, Malibu | `locations/el-matador` | Location page | Location: El Matador Beach, Malibu |
+| Griffith Park | `locations/griffith-park` | Location page | Location: Griffith Park |
+| Arroyo Seco, Pasadena | `locations/arroyo-seco-pasadena` | Location page | Location: Arroyo Seco, Pasadena |
+
+Create a parent page `locations` first so the studio URLs nest. Put the
+meeting point in each location page's **excerpt** — the theme turns it into
+Place structured data.
+
+Newborn is now the ninth service: it appears in the services grid, the
+pricing page, the galleries showcase, the `newborns` portfolio section and
+the LocalBusiness offer list. The first-year package (three sessions,
+$1,800) sits on the newborn service page.
+
+### Booking calendar
+
+Paste a Calendly or Acuity link under **Appearance → Customize → Studio
+details → Scheduling link**. The booking page embeds it below the copy;
+until then it shows the phone and email. Turn on deposit collection inside
+the scheduler so the deposit is paid at booking. The albums and mini-session
+pages send `?add=` and `?session=` to the booking page — map those to an
+intake question in the scheduler if you want to see them.
+
+### Menu
+
+Add to the main menu: Galleries · Families · Kids · Newborns · Weddings ·
+Pricing · Journal · Gifts · About. Footer: Mini sessions · Albums · Before
+your session · Locations · Book.

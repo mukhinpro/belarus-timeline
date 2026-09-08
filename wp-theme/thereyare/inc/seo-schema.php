@@ -119,6 +119,7 @@ function thereyare_business_node(): array {
 				'Kids birthday party photography',
 				'Wedding photography',
 				'Maternity photography',
+				'Newborn photography',
 				'Motherhood and parent portrait photography',
 				'Portrait photography for adults',
 				'Child model portfolio and agency comp card photography',
@@ -349,6 +350,52 @@ add_action(
 			$faq = thereyare_faq_from_blocks( $content );
 			if ( $faq ) {
 				$graph[] = [ '@type' => 'FAQPage', 'mainEntity' => $faq ];
+			}
+
+			// Journal entries carry authorship, which is what Google reads as
+			// experience on a page giving advice about a service you sell.
+			if ( is_singular( 'post' ) ) {
+				$article = [
+					'@type'            => 'BlogPosting',
+					'@id'              => get_permalink() . '#article',
+					'headline'         => get_the_title(),
+					'description'      => has_excerpt() ? get_the_excerpt() : '',
+					'url'              => get_permalink(),
+					'datePublished'    => get_the_date( 'c' ),
+					'dateModified'     => get_the_modified_date( 'c' ),
+					'publisher'        => [ '@id' => home_url( '/#business' ) ],
+					'mainEntityOfPage' => get_permalink(),
+					'inLanguage'       => get_bloginfo( 'language' ),
+				];
+
+				if ( thereyare_setting( 'thereyare_photographer' ) ) {
+					$article['author'] = [ '@id' => home_url( '/#photographer' ) ];
+				}
+
+				if ( has_post_thumbnail() ) {
+					$article['image'] = get_the_post_thumbnail_url( $post_id, 'thereyare-full' );
+				}
+
+				$graph[] = $article;
+			}
+
+			// A location page is a Place. Put the street address in the page
+			// excerpt and it lands here without anyone touching code.
+			if ( is_page() && 'page-location' === get_page_template_slug( $post_id ) ) {
+				$graph[] = [
+					'@type'            => 'Place',
+					'@id'              => get_permalink() . '#place',
+					'name'             => get_the_title(),
+					'url'              => get_permalink(),
+					'address'          => [
+						'@type'           => 'PostalAddress',
+						'streetAddress'   => trim( wp_strip_all_tags( get_the_excerpt() ) ),
+						'addressLocality' => thereyare_setting( 'thereyare_city' ),
+						'addressRegion'   => thereyare_setting( 'thereyare_region' ),
+						'addressCountry'  => 'US',
+					],
+					'containedInPlace' => [ '@type' => 'City', 'name' => thereyare_setting( 'thereyare_city' ) ],
+				];
 			}
 
 			// A service page describes one offering; say so explicitly.

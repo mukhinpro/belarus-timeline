@@ -82,6 +82,20 @@
 
 <!-- wp:group {"layout":{"type":"constrained"},"style":{"spacing":{"blockGap":"0"}}} -->
 <div class="wp-block-group"><!-- wp:image {"aspectRatio":"3/4","scale":"cover","sizeSlug":"thereyare-tile","linkDestination":"custom","style":{"border":{"radius":"18px"}}} -->
+<figure class="wp-block-image size-thereyare-tile has-custom-border"><a href="/sessions/newborns/"><img alt="Newborn photography gallery — Los Angeles"/></a></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading {"level":2,"style":{"spacing":{"margin":{"top":"14px","bottom":"4px"}}},"fontSize":"x-large"} -->
+<h2 class="wp-block-heading has-x-large-font-size" style="margin-top:14px;margin-bottom:4px"><a href="/sessions/newborns/">Newborns</a></h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"textColor":"dim","fontSize":"small"} -->
+<p class="has-dim-color has-text-color has-small-font-size">The last weeks, kept</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"layout":{"type":"constrained"},"style":{"spacing":{"blockGap":"0"}}} -->
+<div class="wp-block-group"><!-- wp:image {"aspectRatio":"3/4","scale":"cover","sizeSlug":"thereyare-tile","linkDestination":"custom","style":{"border":{"radius":"18px"}}} -->
 <figure class="wp-block-image size-thereyare-tile has-custom-border"><a href="/sessions/motherhood/"><img alt="Motherhood and parent portrait gallery — Los Angeles"/></a></figure>
 <!-- /wp:image -->
 
